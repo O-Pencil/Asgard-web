@@ -5,6 +5,13 @@
  * [HERE]: packages/web/src/components/Layout.jsx - Layout wrapper component; header with navigation, user info, and logout
  */
 export default function Layout({ children, page, onNavigate, user, onLogout }) {
+  const navItems = [
+    { key: 'market', label: 'Agent 市场' },
+    { key: 'my-agents', label: '我的 Agent' },
+    { key: 'conversations', label: '对话' },
+    { key: 'console', label: '控制台' },
+  ]
+  
   return (
     <div className="min-h-screen bg-slate-50">
       {/* 顶部导航 */}
@@ -13,18 +20,15 @@ export default function Layout({ children, page, onNavigate, user, onLogout }) {
           <div className="flex items-center gap-8">
             <span className="font-bold text-xl text-slate-800">Asgard</span>
             <nav className="flex gap-6">
-              <button
-                onClick={() => onNavigate('market')}
-                className={`text-sm font-medium ${page === 'market' ? 'text-indigo-600' : 'text-slate-600 hover:text-slate-900'}`}
-              >
-                Agent 市场
-              </button>
-              <button
-                onClick={() => onNavigate('console')}
-                className={`text-sm font-medium ${page === 'console' ? 'text-indigo-600' : 'text-slate-600 hover:text-slate-900'}`}
-              >
-                控制台
-              </button>
+              {navItems.map(({ key, label }) => (
+                <button
+                  key={key}
+                  onClick={() => onNavigate(key)}
+                  className={`text-sm font-medium ${page === key ? 'text-indigo-600' : 'text-slate-600 hover:text-slate-900'}`}
+                >
+                  {label}
+                </button>
+              ))}
               <a href="#" className="text-sm font-medium text-slate-600 hover:text-slate-900">
                 文档
               </a>

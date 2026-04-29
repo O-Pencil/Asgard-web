@@ -10,7 +10,9 @@ React components for UI structure and layout. Provides shared components used ac
 
 ## Member List
 
-Layout.jsx: Main layout wrapper component, provides sticky header navigation with Logo, nav buttons (Agent Market, Console, Documentation), "Get API Key" button using wired-button component, balance display with user avatar, renders children components in main content area
+Layout.jsx: Main layout wrapper component, provides sticky header navigation with Logo, nav buttons (Agent 市场, 我的 Agent, 对话, 控制台, 文档), balance display with user info, renders children components in main content area
+
+ChatMessage.jsx: Message bubble component for chat, renders user messages (right-aligned, indigo) and assistant messages (left-aligned, white), supports streaming status with cursor animation, markdown rendering via react-markdown, error state display, includes AssistantLoading placeholder
 
 ---
 
