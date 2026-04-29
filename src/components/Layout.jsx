@@ -1,10 +1,10 @@
 /**
- * [WHO]: Provides main layout wrapper component with sticky header navigation, page toggle buttons, balance display, user avatar, renders children in main content area
- * [FROM]: Depends on React for functional component, wired-button for styled buttons, accepts page and onNavigate props
+ * [WHO]: Provides main layout wrapper component with sticky header navigation, real user info, balance display, logout button
+ * [FROM]: Depends on React for functional component, wired-button, receives user/onLogout props from App.jsx
  * [TO]: Consumed by App.jsx to wrap page components, provides consistent navigation and header across all pages
- * [HERE]: packages/web/src/components/Layout.jsx - Layout wrapper component; header with navigation and user info, main content area
+ * [HERE]: packages/web/src/components/Layout.jsx - Layout wrapper component; header with navigation, user info, and logout
  */
-export default function Layout({ children, page, onNavigate }) {
+export default function Layout({ children, page, onNavigate, user, onLogout }) {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* 顶部导航 */}
@@ -31,15 +31,20 @@ export default function Layout({ children, page, onNavigate }) {
             </nav>
           </div>
           <div className="flex items-center gap-4">
-            <wired-button onClick={() => {}} elevation={3}>
-              获取 API Key
-            </wired-button>
-            <div className="flex items-center gap-3 pl-4 border-l border-slate-200">
+            <div className="flex items-center gap-3">
               <span className="text-sm text-slate-500">余额:</span>
-              <span className="text-sm font-medium text-slate-700">1,280 Credits</span>
-              <div className="w-8 h-8 rounded-full bg-slate-300 flex items-center justify-center text-xs font-medium text-slate-600">
-                用户
-              </div>
+              <span className="text-sm font-medium text-slate-700">
+                {user?.balance?.toFixed(0) ?? '0'} Credits
+              </span>
+            </div>
+            <div className="flex items-center gap-2 pl-4 border-l border-slate-200">
+              <span className="text-sm text-slate-600">{user?.full_name || user?.email}</span>
+              <button
+                onClick={onLogout}
+                className="text-xs text-slate-400 hover:text-slate-600 ml-1"
+              >
+                退出
+              </button>
             </div>
           </div>
         </div>
