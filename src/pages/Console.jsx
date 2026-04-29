@@ -1,3 +1,9 @@
+/**
+ * [WHO]: Provides Developer Console page with tabs: Overview (balance, stats), Credential Management (API Key create/list/delete), Integration Guides (Cursor/VS Code/Notion templates), Usage Statistics (token consumption charts)
+ * [FROM]: Depends on React for useState hooks, wired-card for containers, wired-button for actions, table for key list display
+ * [TO]: Consumed by App.jsx as child component, rendered when page state is 'console'
+ * [HERE]: packages/web/src/pages/Console.jsx - Developer Console page; provides API Key management, integration guides, and usage analytics
+ */
 import { useState } from 'react'
 
 const TABS = ['概览', '凭证管理', '集成指南', '用量统计']

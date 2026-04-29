@@ -1,3 +1,9 @@
+/**
+ * [WHO]: Provides Agent Marketplace page with category filtering, capability tags, context window selection, price range filters, agent card grid with enable/disable buttons
+ * [FROM]: Depends on React for useState hooks, wired-card for card containers, wired-checkbox for filter controls, wired-input for search, wired-button for actions
+ * [TO]: Consumed by App.jsx as child component, rendered when page state is 'market'
+ * [HERE]: packages/web/src/pages/AgentMarket.jsx - Agent Marketplace page; displays grid of agent cards with filtering and sorting
+ */
 import { useState } from 'react'
 
 const CATEGORIES = { dev: '开发', writing: '写作', creative: '创意', analysis: '分析' }

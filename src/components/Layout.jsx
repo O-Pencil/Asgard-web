@@ -1,3 +1,9 @@
+/**
+ * [WHO]: Provides main layout wrapper component with sticky header navigation, page toggle buttons, balance display, user avatar, renders children in main content area
+ * [FROM]: Depends on React for functional component, wired-button for styled buttons, accepts page and onNavigate props
+ * [TO]: Consumed by App.jsx to wrap page components, provides consistent navigation and header across all pages
+ * [HERE]: packages/web/src/components/Layout.jsx - Layout wrapper component; header with navigation and user info, main content area
+ */
 export default function Layout({ children, page, onNavigate }) {
   return (
     <div className="min-h-screen bg-slate-50">
