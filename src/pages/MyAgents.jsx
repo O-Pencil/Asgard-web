@@ -6,13 +6,14 @@
  * See: Pencil-Agent-Gateway/docs/12-asgard-web-ui-guide.md §2.1
  */
 import { useState, useEffect, useCallback } from 'react'
-import { listPencilAgents, deletePencilAgent, gatewayAgentId, userFacing } from '../api'
+import { listPencilAgents, deletePencilAgent, retrySyncPencilAgent, gatewayAgentId, userFacing } from '../api'
 import { formatRelativeTime, truncate } from '../hooks/usePencilAgents'
 
 const STATUS_LABELS = {
   syncing: { label: '同步中', className: 'bg-yellow-100 text-yellow-700' },
   ready: { label: '就绪', className: 'bg-green-100 text-green-700' },
   error: { label: '错误', className: 'bg-red-100 text-red-700' },
+  delete_error: { label: '删除失败', className: 'bg-red-100 text-red-700' },
 }
 
 export default function MyAgents({ onNavigate, onOpenChat, onEditAgent }) {
@@ -51,6 +52,16 @@ export default function MyAgents({ onNavigate, onOpenChat, onEditAgent }) {
       alert(userFacing(err))
     } finally {
       setDeleteConfirm(null)
+    }
+  }
+
+  const handleRetrySync = async (agent) => {
+    const id = gatewayAgentId(agent)
+    try {
+      const updated = await retrySyncPencilAgent(id)
+      setAgents(prev => prev.map(a => gatewayAgentId(a) === id ? updated : a))
+    } catch (err) {
+      alert(userFacing(err))
     }
   }
 
@@ -131,11 +142,33 @@ export default function MyAgents({ onNavigate, onOpenChat, onEditAgent }) {
                 <div className="flex justify-between items-start mb-3">
                   <div>
                     <h3 className="font-semibold text-slate-800">{agent.name}</h3>
-                    <span className={`inline-block text-xs px-2 py-0.5 rounded mt-1 ${statusInfo.className}`}>
-                      {statusInfo.label}
-                    </span>
+                    <div className="flex items-center gap-2 mt-1">
+                      <span className={`inline-block text-xs px-2 py-0.5 rounded ${statusInfo.className}`}>
+                        {statusInfo.label}
+                      </span>
+                      {agent.retry_count > 0 && (
+                        <span className="text-xs text-slate-400">重试 {agent.retry_count} 次</span>
+                      )}
+                    </div>
                   </div>
+                  {/* Retry sync button for error states */}
+                  {(status === 'error' || status === 'delete_error') && (
+                    <button
+                      onClick={(e) => { e.stopPropagation(); handleRetrySync(agent) }}
+                      className="text-xs px-2 py-1 border border-orange-300 text-orange-600 rounded hover:bg-orange-50"
+                      title={agent.gateway_error || '点击重试同步到 Gateway'}
+                    >
+                      重试
+                    </button>
+                  )}
                 </div>
+
+                {/* Gateway error message */}
+                {(status === 'error' || status === 'delete_error') && agent.gateway_error && (
+                  <div className="text-xs text-red-500 mb-2 bg-red-50 px-2 py-1 rounded">
+                    {agent.gateway_error}
+                  </div>
+                )}
                 
                 {/* Soul preview */}
                 <p className="text-sm text-slate-600 mb-3 line-clamp-2">

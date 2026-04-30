@@ -154,6 +154,12 @@ export async function createPencilAgent(data) {
   })
 }
 
+// ============ Model Providers API ============
+
+export async function listModelProviders() {
+  return apiFetch('/api/v1/agents/pencil/models')
+}
+
 // ============ Console API ============
 
 export async function listKeys() {
@@ -236,6 +242,10 @@ export async function updatePencilAgentAPI(agentId, data) {
 
 export async function deletePencilAgent(agentId) {
   return apiFetch(`/api/v1/agents/pencil/${gatewayAgentId(agentId)}`, { method: 'DELETE' })
+}
+
+export async function retrySyncPencilAgent(agentId) {
+  return apiFetch(`/api/v1/agents/pencil/${gatewayAgentId(agentId)}/retry-sync`, { method: 'POST' })
 }
 
 // ============ Conversations API ============

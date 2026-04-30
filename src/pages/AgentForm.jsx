@@ -6,42 +6,7 @@
  * See: Pencil-Agent-Gateway/docs/12-asgard-web-ui-guide.md §2.2
  */
 import { useState, useEffect } from 'react'
-import { createPencilAgentAPI, gatewayAgentId, updatePencilAgentAPI, userFacing } from '../api'
-
-const MODEL_PROVIDERS = [
-  { value: '', label: '使用默认' },
-  { value: 'anthropic', label: 'Anthropic' },
-  { value: 'openai', label: 'OpenAI' },
-  { value: 'google', label: 'Google' },
-  { value: 'ollama', label: 'Ollama (本地)' },
-]
-
-const MODEL_OPTIONS = {
-  '': [{ value: '', label: '使用默认' }],
-  anthropic: [
-    { value: '', label: '使用默认' },
-    { value: 'claude-sonnet-4-7-20250714', label: 'Claude Sonnet 4 (最新)' },
-    { value: 'claude-3-5-sonnet-20241022', label: 'Claude 3.5 Sonnet' },
-    { value: 'claude-3-5-haiku-20241022', label: 'Claude 3.5 Haiku' },
-  ],
-  openai: [
-    { value: '', label: '使用默认' },
-    { value: 'gpt-4o', label: 'GPT-4o' },
-    { value: 'gpt-4o-mini', label: 'GPT-4o Mini' },
-    { value: 'gpt-4-turbo', label: 'GPT-4 Turbo' },
-  ],
-  google: [
-    { value: '', label: '使用默认' },
-    { value: 'gemini-2.0-flash', label: 'Gemini 2.0 Flash' },
-    { value: 'gemini-1.5-pro', label: 'Gemini 1.5 Pro' },
-  ],
-  ollama: [
-    { value: '', label: '使用默认' },
-    { value: 'llama3', label: 'Llama 3' },
-    { value: 'qwen2.5', label: 'Qwen 2.5' },
-    { value: 'deepseek-v3', label: 'DeepSeek V3' },
-  ],
-}
+import { createPencilAgentAPI, gatewayAgentId, updatePencilAgentAPI, userFacing, listModelProviders } from '../api'
 
 const SOUL_PLACEHOLDER = `你是谁？
 - 你是我的写作助手，专注于帮助用户创作高质量内容
@@ -57,6 +22,18 @@ const SOUL_PLACEHOLDER = `你是谁？
 - 如有疑问，主动确认需求
 - 在不确定时，坦诚表达`
 
+function formatProviderLabel(providerId) {
+  const labels = {
+    'dashscope-coding': '通义千问 (DashScope)',
+    'minimax-coding': 'MiniMax (Coding Plan)',
+    'zhipu-coding': '智谱 GLM',
+    'qianfan-coding': '百度千帆',
+    'ark-coding': '火山引擎 Ark',
+    'anthropic-custom': 'Anthropic (自定义)',
+  }
+  return labels[providerId] || providerId
+}
+
 export default function AgentForm({ editAgent, onNavigate, onSuccess }) {
   const isEdit = Boolean(editAgent)
   const [form, setForm] = useState({
@@ -70,18 +47,47 @@ export default function AgentForm({ editAgent, onNavigate, onSuccess }) {
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState(null)
 
+  // Model providers loaded from backend API
+  const [modelProviders, setModelProviders] = useState([])
+  const [modelOptions, setModelOptions] = useState([])
+
+  // Load model providers from backend
+  useEffect(() => {
+    listModelProviders().then(providers => {
+      const providerList = Object.entries(providers).map(([id, config]) => ({
+        value: id,
+        label: formatProviderLabel(id),
+      }))
+      setModelProviders(providerList)
+
+      const optionsMap = { '': [{ value: '', label: '使用默认' }] }
+      for (const [providerId, config] of Object.entries(providers)) {
+        const modelList = config.models.map(m => ({
+          value: m.id,
+          label: m.name,
+        }))
+        optionsMap[providerId] = [{ value: '', label: '使用默认' }, ...modelList]
+      }
+      setModelOptions(optionsMap)
+    }).catch(err => {
+      console.error('Failed to load model providers:', err)
+    })
+  }, [])
+
+  // Populate form when editing existing agent
   useEffect(() => {
     if (editAgent) {
-      setForm({
+      setForm(prev => ({
+        ...prev,
         name: editAgent.name || '',
         soul_prompt: editAgent.soul_prompt || editAgent.system_prompt || '',
-        style_tags: Array.isArray(editAgent.style_tags) 
-          ? editAgent.style_tags.join(', ') 
+        style_tags: Array.isArray(editAgent.style_tags)
+          ? editAgent.style_tags.join(', ')
           : (editAgent.style_tags || ''),
         memory_max_turns: editAgent.memory_max_turns || editAgent.max_turns || 30,
         model_provider: editAgent.model_provider || '',
         model_name: editAgent.model_name || '',
-      })
+      }))
     }
   }, [editAgent])
 
@@ -246,7 +252,8 @@ export default function AgentForm({ editAgent, onNavigate, onSuccess }) {
               onChange={(e) => handleChange('model_provider', e.target.value)}
               className="w-full border border-slate-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
             >
-              {MODEL_PROVIDERS.map(opt => (
+              <option value="">使用默认</option>
+              {modelProviders.map(opt => (
                 <option key={opt.value} value={opt.value}>{opt.label}</option>
               ))}
             </select>
@@ -258,10 +265,11 @@ export default function AgentForm({ editAgent, onNavigate, onSuccess }) {
             <select
               value={form.model_name}
               onChange={(e) => handleChange('model_name', e.target.value)}
-              disabled={!form.model_provider}
+              disabled={!form.model_provider || modelOptions.length === 0}
               className="w-full border border-slate-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent disabled:bg-slate-100 disabled:text-slate-400"
             >
-              {(MODEL_OPTIONS[form.model_provider] || MODEL_OPTIONS['']).map(opt => (
+              <option value="">使用默认</option>
+              {(modelOptions[form.model_provider] || []).map(opt => (
                 <option key={opt.value} value={opt.value}>{opt.label}</option>
               ))}
             </select>
