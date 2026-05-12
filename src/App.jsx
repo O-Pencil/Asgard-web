@@ -126,9 +126,13 @@ function App() {
     )
   }
 
-  // if (!user) {
-  //   return <Login onLogin={handleLogin} />
-  // }
+  // Show login page when auto-login fails (e.g., when public deploy doesn't
+  // expose admin password via config.js — the safe default for any non-private
+  // hosting). Removing this gate would expose every API to anonymous callers
+  // through `getMe()` since the SPA never re-authenticates.
+  if (!user) {
+    return <Login onLogin={handleLogin} />
+  }
 
   // Render current page
   const renderPage = () => {
