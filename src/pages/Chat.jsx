@@ -8,6 +8,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { streamChat, createConversation, gatewayAgentId, pencilModelId, userFacing } from '../api'
 import ChatMessage, { AssistantLoading } from '../components/ChatMessage'
+import { safeUuid } from '../utils/uuid'
 
 /**
  * @typedef {'user' | 'assistant'} Role
@@ -18,8 +19,9 @@ import ChatMessage, { AssistantLoading } from '../components/ChatMessage'
 export default function Chat({ agent, conversationId: initialConversationId, onNavigate, onNewSession }) {
   // Session management
   const [sessionId, setSessionId] = useState(() => {
-    // Use existing conversation ID or generate new UUID
-    return initialConversationId || (typeof crypto !== 'undefined' ? crypto.randomUUID() : Date.now().toString())
+    // Use existing conversation ID or generate new UUID.
+    // safeUuid handles insecure-context HTTP (where crypto.randomUUID is undefined).
+    return initialConversationId || safeUuid()
   })
   
   // Message state
@@ -50,10 +52,7 @@ export default function Chat({ agent, conversationId: initialConversationId, onN
    * Start a new conversation (new session)
    */
   const startNewSession = useCallback(async () => {
-    const newSessionId = typeof crypto !== 'undefined' 
-      ? crypto.randomUUID() 
-      : Date.now().toString()
-    
+    const newSessionId = safeUuid()
     setSessionId(newSessionId)
     setMessages([])
     setStreamingContent('')
