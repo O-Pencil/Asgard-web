@@ -104,10 +104,12 @@ async function apiFetch(path, options = {}) {
 // ============ Auth API ============
 
 export async function login(email, password) {
-  const res = await fetch(apiUrl('/api/v1/auth/login'), {
+  // Backend signature: `login(email: str, password: str)` — without Form()
+  // these become FastAPI query parameters, not body. Send as URL query
+  // string accordingly. (Form-encoded body would silently 422.)
+  const qs = new URLSearchParams({ email, password }).toString()
+  const res = await fetch(apiUrl(`/api/v1/auth/login?${qs}`), {
     method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({ email, password }),
   })
 
   if (!res.ok) {
