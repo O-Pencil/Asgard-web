@@ -79,8 +79,14 @@ async function apiFetch(path, options = {}) {
   const res = await fetch(apiUrl(path), { ...options, headers })
 
   if (res.status === 401) {
-    clearToken()
-    window.location.reload()
+    // Only force-reload when we HAD a token (session expired / invalidated).
+    // Initial pageload calls (auto-login attempt, getMe with no token, etc.)
+    // would otherwise reload-loop forever — let them throw normally so the
+    // App.jsx code path can fall through to <Login />.
+    if (token) {
+      clearToken()
+      window.location.reload()
+    }
     throw new Error('Unauthorized')
   }
 
