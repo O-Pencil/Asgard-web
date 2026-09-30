@@ -15,6 +15,7 @@ import MyAgents from './pages/MyAgents'
 import AgentForm from './pages/AgentForm'
 import Conversations from './pages/Conversations'
 import Chat from './pages/Chat'
+import Admin from './pages/Admin'
 import { getToken, getMe, clearToken, login } from './api'
 import Landing from './Landing'
 import './App.css'
@@ -29,7 +30,9 @@ const DEFAULT_ADMIN = {
 }
 
 function App() {
-  const isConsoleRoute = window.location.pathname.startsWith('/app')
+  const path = window.location.pathname
+  const isConsoleRoute = path.startsWith('/app')
+  const isAdminRoute = path.startsWith('/admin')
   const [page, setPage] = useState('market')
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -39,7 +42,7 @@ function App() {
   const [selectedConversation, setSelectedConversation] = useState(null)
 
   useEffect(() => {
-    if (!isConsoleRoute) {
+    if (!isConsoleRoute && !isAdminRoute) {
       setLoading(false)
       return
     }
@@ -70,7 +73,7 @@ function App() {
     }
 
     initAuth()
-  }, [isConsoleRoute])
+  }, [isConsoleRoute, isAdminRoute])
 
   const handleLogin = async () => {
     const u = await getMe()
@@ -126,7 +129,7 @@ function App() {
     // Could refresh agent list here if needed
   }, [])
 
-  if (!isConsoleRoute) return <Landing />
+  if (!isConsoleRoute && !isAdminRoute) return <Landing />
 
   if (loading) {
     return (
@@ -143,6 +146,8 @@ function App() {
   if (!user) {
     return <Login onLogin={handleLogin} />
   }
+
+  if (isAdminRoute) return <Admin user={user} onLogout={handleLogout} />
 
   // Render current page
   const renderPage = () => {

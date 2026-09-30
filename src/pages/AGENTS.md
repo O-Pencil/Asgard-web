@@ -4,7 +4,7 @@
 
 ## Module Overview
 
-Page components for main application views. Implements Agent Marketplace, Developer Console, My Agents, Agent Form, Conversations, and Chat pages following the UI guide in Pencil-Agent-Gateway/docs/12-asgard-web-ui-guide.md.
+Page components for main application views. Implements Agent Marketplace, Developer Console, My Agents, Agent Form, Conversations, Chat, and Admin pages following the UI guide in Pencil-Agent-Gateway/docs/12-asgard-web-ui-guide.md.
 
 ---
 
@@ -21,6 +21,8 @@ AgentForm.jsx: Create/Edit PencilAgent form with name, soul (system prompt), sty
 Conversations.jsx: Conversation history list page, displays conversations with title/agent name/message count/last activity, supports pagination and delete operations
 
 Chat.jsx: Streaming chat window with SSE support, displays user/assistant messages with markdown rendering, streaming cursor animation, Stop/Send buttons, retry on error, and new conversation button
+
+Admin.jsx: Admin-only dashboard for platform operators, displays users, Creem subscription status, Catea Pro quota windows, hosted usage events, and MiniMax provider configuration status
 
 ---
 

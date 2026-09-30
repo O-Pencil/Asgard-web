@@ -197,6 +197,16 @@ export async function getUsageStats(period = 'week') {
   return apiFetch(`/api/v1/console/usage/stats?period=${period}`)
 }
 
+// ============ Admin API ============
+
+export async function getAdminOverview() {
+  return apiFetch('/admin/overview')
+}
+
+export async function listAdminUsers() {
+  return apiFetch('/admin/users')
+}
+
 // ============ PencilAgent API ============
 // See: Pencil-Agent-Gateway/docs/12-asgard-web-ui-guide.md §6
 
