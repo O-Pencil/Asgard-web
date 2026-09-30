@@ -25,7 +25,7 @@ import './App.css'
 const config = window.__ASGARD_CONFIG__ || {}
 const DEFAULT_ADMIN = {
   email: config.adminEmail || import.meta.env.VITE_ADMIN_EMAIL || 'admin@asgard.dev',
-  password: config.adminPassword || import.meta.env.VITE_ADMIN_PASSWORD || 'password',
+  password: config.adminPassword || import.meta.env.VITE_ADMIN_PASSWORD || '',
 }
 
 function App() {
@@ -47,8 +47,8 @@ function App() {
     const initAuth = async () => {
       let token = getToken()
       
-      // If no token, auto-login as admin
-      if (!token) {
+      // If explicitly configured, auto-login as admin for private deployments.
+      if (!token && DEFAULT_ADMIN.password) {
         try {
           const loginRes = await login(DEFAULT_ADMIN.email, DEFAULT_ADMIN.password)
           token = loginRes.access_token

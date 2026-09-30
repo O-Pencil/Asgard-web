@@ -8,6 +8,6 @@ cat > /usr/share/nginx/html/config.js <<EOF
 window.__ASGARD_CONFIG__ = {
   apiOrigin: "${ASGARD_API_ORIGIN:-}",
   adminEmail: "${ADMIN_EMAIL:-admin@asgard.dev}",
-  adminPassword: "${ADMIN_PASSWORD:-password}",
+  adminPassword: "${ADMIN_PASSWORD:-}",
 };
 EOF
