@@ -1,8 +1,8 @@
 /**
- * [WHO]: Provides main application component with auto-login for development, renders Layout with child page components
- * [FROM]: Depends on React for useState/useEffect, Layout component, all page components, api.js for getMe/setToken
+ * [WHO]: Provides main application component with public landing route and console auto-login for development
+ * [FROM]: Depends on React for useState/useEffect/useCallback, Landing component, Layout component, all page components, api.js for auth helpers
  * [TO]: Consumed by main.jsx as root component, rendered to DOM root element
- * [HERE]: packages/web/src/App.jsx - Main application component; auto-logs in as admin for development
+ * [HERE]: packages/web/src/App.jsx - Main application component; serves Catea landing at / and Asgard console at /app
  * 
  * Page types: market, console, my-agents, agent-form, conversations, chat, settings
  */
@@ -15,7 +15,9 @@ import MyAgents from './pages/MyAgents'
 import AgentForm from './pages/AgentForm'
 import Conversations from './pages/Conversations'
 import Chat from './pages/Chat'
-import { getToken, getMe, setToken, clearToken, login } from './api'
+import { getToken, getMe, clearToken, login } from './api'
+import Landing from './Landing'
+import './App.css'
 
 // Admin credentials for SINGLE_USER_MODE auto-login.
 // Read from runtime config (public/config.js) or fall back to build-time env vars.
@@ -27,6 +29,7 @@ const DEFAULT_ADMIN = {
 }
 
 function App() {
+  const isConsoleRoute = window.location.pathname.startsWith('/app')
   const [page, setPage] = useState('market')
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -36,6 +39,11 @@ function App() {
   const [selectedConversation, setSelectedConversation] = useState(null)
 
   useEffect(() => {
+    if (!isConsoleRoute) {
+      setLoading(false)
+      return
+    }
+
     const initAuth = async () => {
       let token = getToken()
       
@@ -62,7 +70,7 @@ function App() {
     }
 
     initAuth()
-  }, [])
+  }, [isConsoleRoute])
 
   const handleLogin = async () => {
     const u = await getMe()
@@ -117,6 +125,8 @@ function App() {
   const handleAgentSuccess = useCallback(() => {
     // Could refresh agent list here if needed
   }, [])
+
+  if (!isConsoleRoute) return <Landing />
 
   if (loading) {
     return (
