@@ -18,7 +18,7 @@ const copy = {
       eyebrow: 'Catea for Obsidian',
       titleHello: 'Hello,',
       titleName: 'Catea.',
-      lead: 'make your knowledge think',
+      lead: 'Make Your Knowledge Think',
       primary: 'Get Catea',
       secondary: 'View docs',
     },
@@ -82,7 +82,7 @@ const copy = {
       eyebrow: 'Catea for Obsidian',
       titleHello: 'Hello,',
       titleName: 'Catea.',
-      lead: 'make your knowledge think',
+      lead: 'Make Your Knowledge Think',
       primary: 'Get Catea',
       secondary: '查看文档',
     },
@@ -221,8 +221,9 @@ const policySections = {
   ],
   aup: [
     ['1. Prohibited content and conduct', ['Sexual or pornographic content, child-safety violations, graphic violence, hate, non-consensual deepfakes, impersonation, fraud, credential theft, and intellectual-property abuse are prohibited.']],
-    ['2. Enforcement', ['We may restrict access, revoke hosted-model entitlement, or terminate a subscription when this policy is violated. Severe safety issues may be reported to appropriate authorities or service providers.']],
-    ['3. AI disclosure', ['Catea provides AI-generated assistance. Users are responsible for reviewing outputs and avoiding high-risk reliance on unverified AI responses.']],
+    ['2. Hosted-model safety checks', ['Catea Pro hosted-model requests may be checked by automated content-safety systems before generation. Requests that are blocked or require review will not be sent to the hosted model.']],
+    ['3. Enforcement', ['We may restrict access, revoke hosted-model entitlement, or terminate a subscription when this policy is violated. Severe safety issues may be reported to appropriate authorities or service providers.']],
+    ['4. AI disclosure', ['Catea provides AI-generated assistance. Users are responsible for reviewing outputs and avoiding high-risk reliance on unverified AI responses.']],
   ],
 }
 

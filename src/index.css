@@ -148,7 +148,7 @@ body {
 }
 
 .catea-yolo-hero h1 span {
-  display: block;
+  display: inline;
 }
 
 .catea-yolo-hero h1 span:last-child {
@@ -160,7 +160,7 @@ body {
 }
 
 .catea-hero-cat {
-  width: clamp(54px, 7vw, 92px);
+  width: 128px;
   height: auto;
   flex: none;
   opacity: 0.86;
