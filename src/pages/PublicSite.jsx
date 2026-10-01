@@ -8,6 +8,7 @@
 import { useEffect, useState } from 'react'
 
 const LAST_UPDATED = 'October 1, 2026'
+const SUPPORT_EMAIL = 'hdu111111@gmail.com'
 
 const copy = {
   en: {
@@ -56,6 +57,8 @@ const copy = {
       privacy: 'Privacy',
       terms: 'Terms',
       aup: 'Acceptable Use',
+      support: 'Support',
+      email: 'Email',
     },
     policies: {
       privacy: {
@@ -117,6 +120,8 @@ const copy = {
       privacy: '隐私',
       terms: '条款',
       aup: 'AI 使用规范',
+      support: '客服支持',
+      email: '邮箱',
     },
     policies: {
       privacy: { title: '隐私政策', intro: '本政策说明 Catea 会收集哪些信息、收集原因，以及用户如何联系我们。' },
@@ -345,6 +350,10 @@ function Footer({ t }) {
           <a href="/privacy">{t.footer.privacy}</a>
           <a href="/terms">{t.footer.terms}</a>
           <a href="/acceptable-use">{t.footer.aup}</a>
+        </nav>
+        <nav>
+          <h3>{t.footer.support}</h3>
+          <a href={`mailto:${SUPPORT_EMAIL}`}>{t.footer.email}: {SUPPORT_EMAIL}</a>
         </nav>
       </div>
     </footer>

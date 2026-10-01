@@ -122,8 +122,9 @@ body {
 }
 
 .catea-yolo-hero {
-  overflow: hidden;
+  overflow: visible;
   padding-top: 88px;
+  padding-bottom: 80px;
   text-align: center;
 }
 
@@ -520,8 +521,8 @@ body {
 
 .catea-public-footer .catea-yolo-container {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 80px;
+  grid-template-columns: 2fr 1fr 1fr 1.35fr;
+  gap: 54px;
 }
 
 .catea-public-footer p,
