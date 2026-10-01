@@ -133,14 +133,91 @@ const copy = {
 
 const policySections = {
   privacy: [
-    ['1. Information we collect', ['Email used to check subscription status or support requests.', 'Subscription metadata such as plan, payment status, renewal period, and provider event IDs.', 'Hosted-model usage counters used to enforce Catea Pro quotas.', 'Technical logs for security and debugging.']],
-    ['2. How we use information', ['Provide Catea Pro, verify entitlement, prevent abuse, enforce quota, debug service errors, and answer support or privacy requests.']],
-    ['3. Sharing and retention', ['Payment-related information is shared with payment processors only as needed for billing. Subscription records are retained while active and for a reasonable period for tax, fraud-prevention, audit, and dispute purposes.']],
+    [
+      '1. Information we collect',
+      [
+        'Email address used to check subscription status, provide customer support, or respond to privacy and billing requests.',
+        'Subscription metadata such as plan, payment status, renewal period, customer email, and payment provider event IDs.',
+        'Hosted-model usage counters used to enforce Catea Pro quotas and prevent abuse.',
+        'Technical logs such as request time, API route, status code, and error information used for security, fraud prevention, and debugging.',
+        'Support messages and any information you voluntarily send to us.',
+      ],
+    ],
+    [
+      '2. How we use information',
+      [
+        'We use information to provide Catea Pro, verify entitlement, route hosted model requests, enforce quota, prevent abuse, debug service errors, process billing, and answer support, privacy, or safety requests.',
+        'We do not sell personal data. Payment card details are handled by Waffo Pancake and are not stored on Catea servers.',
+      ],
+    ],
+    [
+      '3. Sharing and retention',
+      [
+        'Payment-related information is shared with payment processors only as needed for billing, subscription management, refunds, fraud prevention, and dispute handling.',
+        'Subscription records are retained while the subscription is active and for a reasonable period afterwards for tax, fraud-prevention, audit, and dispute purposes.',
+        'Technical logs are retained only as long as reasonably needed for security, debugging, quota enforcement, or legal compliance.',
+      ],
+    ],
+    [
+      '4. Data rights',
+      [
+        `You may request access to, correction of, export of, or deletion of your personal data by emailing ${SUPPORT_EMAIL}. Please include the email address used for your subscription so we can locate the record.`,
+        'You may also request account closure or cancellation of Catea Pro. If your account is closed, hosted entitlement and related service records will be disabled or deleted unless retention is required for legal, tax, security, fraud-prevention, or dispute reasons.',
+        'We will acknowledge privacy and data-rights requests within 5 business days and aim to complete valid requests within 30 days. If additional verification or time is required, we will explain the reason and expected timeline.',
+        'Some data may be retained where necessary to comply with law, resolve disputes, enforce agreements, maintain security, prevent fraud or abuse, or keep required payment and tax records.',
+      ],
+    ],
   ],
   terms: [
-    ['1. Service', ['Catea is a desktop Obsidian plugin. Catea Pro is a monthly digital subscription that unlocks hosted model access in the plugin for eligible users.']],
-    ['2. Billing and delivery', ['Payment is processed by Waffo Pancake. After successful payment confirmation, users can refresh plan status inside the plugin and use the Catea hosted model route.']],
-    ['3. Cancellation and refunds', ['Refund review is available within 7 days when the paid service cannot be accessed after successful payment, duplicate charges occur, or required by applicable law.']],
+    [
+      '1. Service',
+      [
+        'Catea is a desktop Obsidian plugin for knowledge work. Catea Pro is a monthly digital subscription that unlocks hosted model access in the plugin for eligible users.',
+        'The service is a digital and intangible software service. Access is delivered after payment confirmation by refreshing plan status in the plugin.',
+        'Catea uses third-party infrastructure and AI model providers to provide hosted model access. Availability and output quality may depend on those providers.',
+      ],
+    ],
+    [
+      '2. Billing, cancellation, and refunds',
+      [
+        'Payment is processed by Waffo Pancake. Prices are shown at checkout before payment. Catea Pro is currently offered as a monthly subscription.',
+        `Users may request cancellation or billing help by contacting ${SUPPORT_EMAIL}. Cancellation stops future renewal, but access may remain available until the end of the current paid period unless otherwise required by law.`,
+        'Refund review is available within 7 days when the paid service cannot be accessed after successful payment, duplicate charges occur, or required by applicable law. We may decline refunds for abusive, fraudulent, or already-consumed service usage.',
+      ],
+    ],
+    [
+      '3. Product use rules',
+      [
+        'You may use Catea for lawful personal and professional knowledge work, writing, research, note organization, and productivity inside Obsidian.',
+        'You are responsible for the content you submit, the notes you ask Catea to process, and any decisions you make based on AI output.',
+        'You must not use Catea to generate or facilitate illegal, defamatory, harassing, fraudulent, hateful, sexually exploitative, child-safety-violating, violent, malware-related, phishing, privacy-invasive, or intellectual-property-infringing content.',
+        'You must not attempt to bypass security controls, abuse hosted quota, resell access, scrape the service at scale, interfere with service operation, or use Catea to train or benchmark competing AI systems without permission.',
+      ],
+    ],
+    [
+      '4. AI content disclaimer',
+      [
+        'Catea provides AI-generated assistance. AI output may be inaccurate, incomplete, outdated, or unsuitable for your use case.',
+        'Catea does not provide legal, medical, financial, safety, or other professional advice. You should verify important information with qualified professionals before relying on it.',
+        'You retain responsibility for reviewing proposed note edits, generated content, tool actions, and any changes made to your vault.',
+      ],
+    ],
+    [
+      '5. Disclaimer and limitation of liability',
+      [
+        'The service is provided “as is” and “as available” without warranties of uninterrupted availability, error-free operation, fitness for a particular purpose, or accuracy of AI output.',
+        'To the maximum extent permitted by law, Catea will not be liable for indirect, incidental, consequential, special, exemplary, or punitive damages, lost profits, lost data, business interruption, or decisions made based on AI-generated output.',
+        'To the maximum extent permitted by law, our total liability for any claim relating to Catea is limited to the amount you paid for Catea Pro during the 12 months before the event giving rise to the claim.',
+      ],
+    ],
+    [
+      '6. Termination and user breach',
+      [
+        'We may suspend or terminate access, revoke hosted-model entitlement, block abusive traffic, or cancel a subscription if you violate these terms, the acceptable-use policy, payment rules, security requirements, or applicable law.',
+        'If access is terminated because of fraud, abuse, chargeback abuse, unlawful conduct, or serious policy violation, you may lose access to hosted features and may not be eligible for a refund.',
+        'You may stop using Catea at any time. Requests about cancellation, account closure, or data deletion can be sent to the support email listed in the site footer.',
+      ],
+    ],
   ],
   aup: [
     ['1. Prohibited content and conduct', ['Sexual or pornographic content, child-safety violations, graphic violence, hate, non-consensual deepfakes, impersonation, fraud, credential theft, and intellectual-property abuse are prohibited.']],
