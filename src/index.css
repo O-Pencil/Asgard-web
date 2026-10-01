@@ -343,7 +343,7 @@ body {
 
 .catea-yolo-feature-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   margin-top: 70px;
 }
@@ -357,8 +357,8 @@ body {
 }
 
 .catea-yolo-card {
-  min-height: 168px;
-  padding: 28px;
+  min-height: 210px;
+  padding: 32px;
 }
 
 .catea-yolo-card h3 {
