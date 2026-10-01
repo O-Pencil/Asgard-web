@@ -1,23 +1,23 @@
 /**
  * [WHO]: Provides main application component with public landing route and console auto-login for development
- * [FROM]: Depends on React for useState/useEffect/useCallback, Landing component, Layout component, all page components, api.js for auth helpers
+ * [FROM]: Depends on React for useState/useEffect/useCallback, PublicSite component, Layout component, all page components, api.js for auth helpers
  * [TO]: Consumed by main.jsx as root component, rendered to DOM root element
- * [HERE]: packages/web/src/App.jsx - Main application component; serves Catea landing at / and Asgard console at /app
+ * [HERE]: packages/web/src/App.jsx - Main application component; serves the public Catea website and preserves direct private app routes
  * 
- * Page types: market, console, my-agents, agent-form, conversations, chat, settings
+ * Page types: public site, market, console, my-agents, agent-form, conversations, chat, settings
  */
 import { useState, useEffect, useCallback } from 'react'
 import Layout from './components/Layout'
 import AgentMarket from './pages/AgentMarket'
 import Console from './pages/Console'
 import Login from './pages/Login'
+import PublicSite from './pages/PublicSite'
 import MyAgents from './pages/MyAgents'
 import AgentForm from './pages/AgentForm'
 import Conversations from './pages/Conversations'
 import Chat from './pages/Chat'
 import Admin from './pages/Admin'
 import { getToken, getMe, clearToken, login } from './api'
-import Landing from './Landing'
 import './App.css'
 
 // Admin credentials for SINGLE_USER_MODE auto-login.
@@ -29,8 +29,14 @@ const DEFAULT_ADMIN = {
   password: config.adminPassword || import.meta.env.VITE_ADMIN_PASSWORD || '',
 }
 
+const PUBLIC_ROUTES = new Set(['/', '/privacy', '/terms', '/acceptable-use'])
+
+function currentPath() {
+  return window.location.pathname.replace(/\/+$/, '') || '/'
+}
+
 function App() {
-  const path = window.location.pathname
+  const path = currentPath()
   const isConsoleRoute = path.startsWith('/app')
   const isAdminRoute = path.startsWith('/admin')
   const [page, setPage] = useState('market')
@@ -129,7 +135,9 @@ function App() {
     // Could refresh agent list here if needed
   }, [])
 
-  if (!isConsoleRoute && !isAdminRoute) return <Landing />
+  if (!isConsoleRoute && !isAdminRoute) {
+    return <PublicSite route={PUBLIC_ROUTES.has(path) ? path : '/'} />
+  }
 
   if (loading) {
     return (
