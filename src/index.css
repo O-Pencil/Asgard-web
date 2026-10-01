@@ -711,12 +711,29 @@ body {
   text-transform: uppercase;
 }
 
-.catea-yolo-plan > strong {
-  display: block;
+.catea-site-plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
   margin-top: 28px;
+}
+
+.catea-site-plan-price del {
+  color: var(--catea-muted);
+  font-size: 17px;
+  font-weight: 650;
+}
+
+.catea-site-plan-price strong {
   color: var(--catea-accent);
   font-size: 42px;
   letter-spacing: -0.05em;
+}
+
+.catea-site-plan-price span {
+  color: var(--catea-muted);
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .catea-yolo-plan p,

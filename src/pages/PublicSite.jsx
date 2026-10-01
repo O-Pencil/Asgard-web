@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react'
 
 const LAST_UPDATED = 'October 1, 2026'
 const SUPPORT_EMAIL = 'hdu111111@gmail.com'
+const OBSIDIAN_PLUGIN_URL = 'https://community.obsidian.md/plugins/catea-paper'
 
 const copy = {
   en: {
@@ -20,7 +21,7 @@ const copy = {
       titleName: 'Catea.',
       lead: 'Make Your Knowledge Think',
       primary: 'Get Catea',
-      secondary: 'View docs',
+      secondary: 'View in Obsidian',
     },
     mock: {
       title: 'obsidian — vault/knowledge-base',
@@ -45,8 +46,8 @@ const copy = {
     pricingTitle: 'Start with your own model. Upgrade when you want it ready-made.',
     pricingSub: 'Use your own key for free, or subscribe to Catea Pro for hosted model access.',
     plans: [
-      ['Free', 'Forever', '$0', 'For users who want full control over their own model setup.', ['Base Catea workspace', 'Bring your own model API key', 'Vault-local sessions and memory', 'No hosted model included'], 'Install in Obsidian'],
-      ['Catea Pro', 'Subscription', '$3 / month', 'Hosted model access and managed monthly usage inside Catea.', ['Everything in Free', 'Hosted model access', 'Monthly managed usage', 'Future premium knowledge features'], 'Subscribe to Pro'],
+      ['Free', 'Bring your own API key', '', '$0', '', 'For users who already have a model provider.', ['Use your own API key', 'Models and keys stay on this device', 'Basic agent and note workflows'], 'Current default plan', OBSIDIAN_PLUGIN_URL],
+      ['Pro', 'Limited-time offer', '$10', '$3', '/ month', 'Ready out of the box. No API key setup required.', ['Includes Catea-hosted AI usage', 'More usage for long documents and agent workflows', 'Allowance restores automatically and resets monthly', 'Priority access to advanced features: connectors, custom personas, and media generation'], 'Subscribe to Pro', '#pricing'],
     ],
     ready: ['Ready to think', 'Give your vault a mind.', 'See plans'],
     footer: {
@@ -84,7 +85,7 @@ const copy = {
       titleName: 'Catea.',
       lead: 'Make Your Knowledge Think',
       primary: 'Get Catea',
-      secondary: '查看文档',
+      secondary: 'View in Obsidian',
     },
     mock: {
       title: 'obsidian — vault/knowledge-base',
@@ -108,8 +109,8 @@ const copy = {
     pricingTitle: '先用自己的模型开始，需要开箱即用时再升级。',
     pricingSub: '免费版使用自己的 Key；Catea Pro 提供托管模型和月度额度。',
     plans: [
-      ['Free', 'Forever', '$0', '适合想完全控制模型配置的用户。', ['基础 Catea 工作区', '配置自己的模型 API Key', 'vault 本地会话与记忆', '不包含托管模型'], '在 Obsidian 中安装'],
-      ['Catea Pro', 'Subscription', '$3 / month', '在 Catea 中使用托管模型和月度额度。', ['包含 Free 的全部能力', '托管模型访问', '月度托管用量', '未来高级知识功能'], '订阅 Pro'],
+      ['Free', '自备 API Key', '', '$0', '', '适合已有模型服务的用户。', ['使用你自己的 API Key', '模型和密钥仍保存在本机', '基础 Agent 和笔记工作流'], '当前默认套餐', OBSIDIAN_PLUGIN_URL],
+      ['Pro', '限时折扣', '$10', '$3', '/ month', '开箱即用，无需配置 API Key。', ['包含 Catea 托管 AI 额度', '更多用量，适合长文档和 Agent 工作流', '额度自动恢复，月度周期重置', '高级功能优先开放：连接器、自定义 Persona、媒体生成'], '订阅 Pro', '#pricing'],
     ],
     ready: ['Ready to think', 'Give your vault a mind.', '查看套餐'],
     footer: {
@@ -295,7 +296,7 @@ function Home({ t }) {
           <p className="catea-yolo-lead">{t.hero.lead}</p>
           <div className="catea-yolo-cta">
             <a className="primary" href="#pricing">{t.hero.primary}</a>
-            <a href="#features">{t.hero.secondary}</a>
+            <a href={OBSIDIAN_PLUGIN_URL} target="_blank" rel="noreferrer">{t.hero.secondary}</a>
           </div>
           <ProductMock t={t.mock} />
         </div>
@@ -333,14 +334,18 @@ function Home({ t }) {
           <h2>{t.pricingTitle}</h2>
           <p className="catea-yolo-sub">{t.pricingSub}</p>
           <div className="catea-yolo-plan-grid">
-            {t.plans.map(([name, badge, price, description, items, action], index) => (
+            {t.plans.map(([name, badge, original, sale, suffix, description, items, action, href], index) => (
               <article key={name} className={index === 1 ? 'catea-yolo-plan featured' : 'catea-yolo-plan'}>
                 {index === 1 && <em>Most Popular</em>}
                 <div className="topline"><h3>{name}</h3><small>{badge}</small></div>
-                <strong>{price}</strong>
+                <div className="catea-site-plan-price">
+                  {original && <del>{original}</del>}
+                  <strong>{sale}</strong>
+                  {suffix && <span>{suffix}</span>}
+                </div>
                 <p>{description}</p>
                 <ul>{items.map(item => <li key={item}>— {item}</li>)}</ul>
-                <a href="#pricing">{action}</a>
+                <a href={href} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noreferrer' : undefined}>{action}</a>
               </article>
             ))}
           </div>
