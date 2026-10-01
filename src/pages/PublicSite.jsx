@@ -1,5 +1,5 @@
 /**
- * [WHO]: Provides public Catea website, privacy policy, terms, refund, and AI acceptable-use pages for payment-provider review
+ * [WHO]: Provides public Catea website, privacy policy, terms, refund, and AI acceptable-use pages
  * [FROM]: Depends on React, @radix-ui/themes; rendered by App.jsx before authenticated product routes
  * [TO]: Consumed by App.jsx for public routes /, /privacy, /terms, /acceptable-use
  * [HERE]: packages/web/src/pages/PublicSite.jsx - Public Catea product website and compliance pages for catea.pencil.chat
@@ -44,22 +44,22 @@ const copy = {
       copied: 'Copied',
     },
     home: {
-      eyebrow: 'Obsidian AI workspace · SaaS subscription',
-      title: 'Catea makes your Obsidian vault AI-ready.',
+      eyebrow: 'Local-first AI workspace for Obsidian',
+      title: 'Chat with your notes. Keep control of your vault.',
       lead:
-        'Catea is a desktop Obsidian plugin that adds a paper-style AI workspace to your vault. Free users can bring their own model API key. Catea Pro adds hosted model access managed by Catea, so subscribers can start using the assistant without configuring an API key.',
-      primary: 'View Catea Pro',
+        'Catea turns Obsidian into a paper-style AI workspace. Work locally with your own vault, bring your own model key for free, or use Catea Pro for hosted model access without extra setup.',
+      primary: 'See plans',
       secondary: 'Contact support',
-      review: 'Official product website for review:',
+      points: ['Desktop Obsidian plugin', 'Vault-local workspace', 'BYOK or hosted model', 'Memory and tools'],
       mock: {
-        pro: 'Catea Pro',
-        included: 'Hosted model included',
-        ask: 'Ask over your vault',
-        askBody: 'Read notes, draft changes, and keep long-term memory in your own vault.',
-        quota: 'Usage managed by Catea',
-        quotaBody: 'Monthly PRO quota and short reset windows keep the service predictable.',
-        safe: 'No card data on our servers',
-        safeBody: 'Payments are processed by Waffo Pancake.',
+        pro: 'Catea workspace',
+        included: 'A focused AI layer inside Obsidian',
+        ask: 'Ask over your notes',
+        askBody: 'Read context, draft changes, and keep the conversation tied to your vault.',
+        quota: 'Choose your model path',
+        quotaBody: 'Use your own key on Free, or subscribe to Pro for managed hosted access.',
+        safe: 'Designed for ownership',
+        safeBody: 'Your workspace stays centered on Obsidian rather than a separate web app.',
       },
       sections: [
         {
@@ -138,7 +138,7 @@ const copy = {
             'Provide the Catea Pro subscription and hosted model access.',
             'Verify entitlement, prevent abuse, enforce quota, and debug service errors.',
             'Answer support, billing, privacy, and safety requests.',
-            'Comply with legal obligations and payment-provider review requirements.',
+            'Comply with legal, security, and payment requirements.',
           ],
         },
         {
@@ -225,22 +225,22 @@ const copy = {
       copied: '已复制',
     },
     home: {
-      eyebrow: 'Obsidian AI 工作区 · SaaS 订阅',
-      title: '让你的 Obsidian 知识库直接拥有 AI 助手。',
+      eyebrow: '面向 Obsidian 的本地优先 AI 工作区',
+      title: '和你的笔记对话，同时保留对知识库的控制。',
       lead:
-        'Catea 是一个桌面端 Obsidian 插件，会在你的知识库里加入纸张式 AI 工作区。免费用户可以配置自己的模型 API Key；订阅 Catea Pro 后，可直接使用 Catea 管理的托管模型，无需自己配置 Key。',
-      primary: '查看 Catea Pro',
+        'Catea 会把 Obsidian 变成纸张式 AI 工作区。你可以继续围绕自己的 vault 工作；免费版配置自己的模型 Key，Pro 版则直接使用 Catea 托管模型，省去额外配置。',
+      primary: '查看套餐',
       secondary: '联系支持',
-      review: '用于审核的官方网站：',
+      points: ['桌面端 Obsidian 插件', '围绕 vault 的本地工作区', 'BYOK 或托管模型', '记忆与工具能力'],
       mock: {
-        pro: 'Catea Pro',
-        included: '已包含托管模型',
-        ask: '围绕你的知识库提问',
-        askBody: '读取笔记、草拟修改，并把长期记忆保存在你的本地知识库中。',
-        quota: '由 Catea 管理用量',
-        quotaBody: '月度 PRO 额度和短周期重置窗口，让服务更稳定可控。',
-        safe: '我们不保存银行卡信息',
-        safeBody: '支付由 Waffo Pancake 处理。',
+        pro: 'Catea workspace',
+        included: '在 Obsidian 内部工作的专注 AI 层',
+        ask: '围绕你的笔记提问',
+        askBody: '读取上下文、草拟修改，并让对话始终围绕你的 vault 展开。',
+        quota: '自由选择模型路径',
+        quotaBody: 'Free 使用自己的 Key；Pro 使用 Catea 管理的托管模型入口。',
+        safe: '为知识所有权设计',
+        safeBody: '工作区以 Obsidian 为中心，而不是把你带到另一个网页应用。',
       },
       sections: [
         {
@@ -309,7 +309,7 @@ const copy = {
         },
         {
           title: '3. 信息用途',
-          bullets: ['提供 Catea Pro 订阅和托管模型访问。', '校验权益、防止滥用、执行额度并排查服务错误。', '回复支持、账单、隐私和安全请求。', '满足法律义务和支付提供商审核要求。'],
+          bullets: ['提供 Catea Pro 订阅和托管模型访问。', '校验权益、防止滥用、执行额度并排查服务错误。', '回复支持、账单、隐私和安全请求。', '满足法律、安全和支付要求。'],
         },
         {
           title: '4. 共享、保留和权利',
@@ -558,21 +558,23 @@ function HomePage({ site }) {
               </Text>
               <Flex mt="6" gap="3" wrap="wrap">
                 <Button asChild size="3" className="catea-button-primary">
-                  <a href="/terms">{t.home.primary}</a>
+                  <a href="#plans">{t.home.primary}</a>
                 </Button>
                 <ContactAction label={t.home.secondary} copiedLabel={t.footer.copied} />
               </Flex>
-              <Text as="p" mt="5" className="catea-small-muted">
-                {t.home.review} <Text weight="medium">{SITE_URL}</Text>
-              </Text>
+              <Flex mt="5" gap="2" wrap="wrap" className="catea-hero-points">
+                {t.home.points.map(point => (
+                  <span key={point}>{point}</span>
+                ))}
+              </Flex>
             </Box>
             <ProductPreview t={t.home.mock} />
           </Grid>
         </Container>
       </Section>
 
-      {t.home.sections.map(section => (
-        <ContentSection key={section.title} kicker={section.kicker} title={section.title}>
+      {t.home.sections.map((section, index) => (
+        <ContentSection key={section.title} id={index === 0 ? 'plans' : undefined} kicker={section.kicker} title={section.title}>
           <Grid columns={{ initial: '1', md: section.cards.length === 3 ? '3' : '2' }} gap="5">
             {section.cards.map(card => (
               <InfoCard key={card.title} title={card.title}>
@@ -637,9 +639,9 @@ function ProductPreview({ t }) {
   )
 }
 
-function ContentSection({ kicker, title, children }) {
+function ContentSection({ id, kicker, title, children }) {
   return (
-    <Section size="3" className="catea-content-section">
+    <Section id={id} size="3" className="catea-content-section">
       <Container size="4" px="5">
         <Text as="div" className="catea-kicker">
           {kicker}
