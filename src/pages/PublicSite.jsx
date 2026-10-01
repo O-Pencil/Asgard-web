@@ -357,29 +357,76 @@ function Home({ t }) {
 function ProductMock({ t }) {
   return (
     <div className="catea-yolo-shot">
-      <div className="catea-yolo-window">
+      <div className="catea-yolo-window catea-ob-window">
         <div className="catea-yolo-titlebar">
           <i /><i /><i />
-          <span>{t.title}</span>
+          <span>{t.title} · knowledge-base</span>
         </div>
-        <aside>
-          <b>FILES</b>
-          <p>▾ {t.vault}</p>
-          <p>— index.md</p>
-          <p>— ai-memory.md</p>
-          <p>— project-catea.md</p>
+        <aside className="catea-ob-sidebar">
+          <div className="catea-ob-vault">
+            <span className="catea-ob-vault-mark">C</span>
+            <div>
+              <strong>{t.vault}</strong>
+              <small>Obsidian vault</small>
+            </div>
+          </div>
+          <nav aria-label="Vault navigation">
+            <a className="is-active" href="#features">⌘ Daily note</a>
+            <a href="#features">◌ Research map</a>
+            <a href="#features">◇ Reading queue</a>
+            <a href="#features">✦ Catea memory</a>
+          </nav>
+          <div className="catea-ob-files">
+            <b>Files</b>
+            <p>▾ 00 Inbox</p>
+            <p>▾ 10 Notes</p>
+            <p className="is-selected">— {t.noteTitle}.md</p>
+            <p>— ai-memory.md</p>
+            <p>▸ .catea</p>
+          </div>
         </aside>
-        <article>
-          <h3>{t.noteTitle}</h3>
-          <blockquote>{t.quote}</blockquote>
-          <p>Three focus areas this quarter:</p>
-          <ul>{t.bullets.map(item => <li key={item}>— {item}</li>)}</ul>
-          <p>{t.related}</p>
+        <article className="catea-ob-note">
+          <div className="catea-ob-tabs">
+            <span>{t.noteTitle}.md</span>
+            <span>ai-memory.md</span>
+          </div>
+          <div className="catea-ob-paper">
+            <p className="catea-ob-breadcrumb">Knowledge base / Catea</p>
+            <h3>{t.noteTitle}</h3>
+            <blockquote>{t.quote}</blockquote>
+            <p>Three focus areas this quarter:</p>
+            <ul>{t.bullets.map(item => <li key={item}>{item}</li>)}</ul>
+            <p>{t.related}</p>
+          </div>
         </article>
-        <section>
-          <b>Catea · Agent</b>
-          <div>{t.question}</div>
-          <div><strong>AGENT · STREAMING</strong>{t.answer}</div>
+        <section className="catea-ob-agent">
+          <header className="catea-ob-agent-header">
+            <button type="button" aria-label="Session history">⌘</button>
+            <strong>Catea</strong>
+            <span>Catea Pro</span>
+            <button type="button" aria-label="Settings">⚙</button>
+          </header>
+          <div className="catea-ob-agent-body">
+            <aside className="catea-ob-history">
+              <h4>Recent chats</h4>
+              <p className="is-current">Knowledge threads</p>
+              <p>Draft launch note</p>
+              <p>Reading queue</p>
+            </aside>
+            <main className="catea-ob-chat">
+              <div className="catea-ob-cat" aria-hidden="true">
+                <img src="/cat-welcome.png" alt="" />
+              </div>
+              <div className="catea-ob-composer">
+                <p>{t.question}</p>
+                <div>
+                  <span>Vault</span>
+                  <span>Memory</span>
+                  <button type="button" aria-label="Send">↑</button>
+                </div>
+              </div>
+            </main>
+          </div>
         </section>
       </div>
     </div>

@@ -212,15 +212,21 @@ body {
 
 .catea-yolo-window {
   display: grid;
-  min-height: 476px;
+  min-height: 520px;
   overflow: hidden;
   border: 1px solid var(--catea-border);
   border-radius: 10px;
   background: var(--catea-paper);
   box-shadow: var(--catea-shadow);
-  grid-template-columns: 210px 1fr 290px;
+  grid-template-columns: 190px minmax(280px, 1fr) 380px;
   grid-template-rows: 42px 1fr;
   text-align: left;
+}
+
+.catea-ob-window {
+  background: #edf0ed;
+  color: #292d2b;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Inter", sans-serif;
 }
 
 .catea-yolo-titlebar {
@@ -245,20 +251,83 @@ body {
   margin-left: 18px;
 }
 
-.catea-yolo-window aside,
-.catea-yolo-window article,
-.catea-yolo-window section {
-  padding: 32px 28px;
+.catea-ob-sidebar,
+.catea-ob-note,
+.catea-ob-agent {
+  min-width: 0;
+  min-height: 0;
 }
 
-.catea-yolo-window aside {
+.catea-ob-sidebar {
+  padding: 18px 12px;
   border-right: 1px solid var(--catea-border);
-  color: var(--catea-muted);
-  font-size: 13px;
+  background: #f9faf9;
+  color: #737e76;
+  font-size: 12px;
 }
 
-.catea-yolo-window b,
-.catea-yolo-window section strong,
+.catea-ob-vault {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.catea-ob-vault-mark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: #164b38;
+  color: #fff;
+  font-family: Georgia, serif;
+  font-size: 18px;
+}
+
+.catea-ob-vault strong {
+  display: block;
+  color: #292d2b;
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.catea-ob-vault small {
+  display: block;
+  margin-top: 1px;
+  color: #737e76;
+  font-size: 10px;
+}
+
+.catea-ob-sidebar nav {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 28px;
+}
+
+.catea-ob-sidebar nav a,
+.catea-ob-files p,
+.catea-ob-history p {
+  display: block;
+  overflow: hidden;
+  border-radius: 7px;
+  color: #737e76;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 7px 8px;
+}
+
+.catea-ob-sidebar nav a.is-active,
+.catea-ob-files p.is-selected,
+.catea-ob-history p.is-current {
+  background: rgba(22, 75, 56, 0.08);
+  color: #164b38;
+}
+
+.catea-ob-files b,
+.catea-ob-history h4,
 .catea-yolo-card p {
   color: var(--catea-accent);
   font-size: 11px;
@@ -267,18 +336,71 @@ body {
   text-transform: uppercase;
 }
 
-.catea-yolo-window article {
-  background: linear-gradient(90deg, rgba(22, 75, 56, 0.035) 1px, transparent 1px);
+.catea-ob-files b {
+  display: block;
+  margin: 0 8px 8px;
+}
+
+.catea-ob-files p {
+  margin: 0;
+  line-height: 1.35;
+}
+
+.catea-ob-note {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.catea-ob-tabs {
+  display: flex;
+  height: 38px;
+  min-height: 38px;
+  align-items: end;
+  gap: 4px;
+  border-bottom: 1px solid var(--catea-border);
+  background: #f9faf9;
+  padding: 0 12px;
+}
+
+.catea-ob-tabs span {
+  border: 1px solid var(--catea-border);
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+  background: #fff;
+  color: #737e76;
+  font-size: 11px;
+  padding: 8px 11px 7px;
+}
+
+.catea-ob-tabs span + span {
+  background: transparent;
+}
+
+.catea-ob-paper {
+  flex: 1;
+  padding: 42px 38px;
+  background:
+    linear-gradient(90deg, rgba(22, 75, 56, 0.035) 1px, transparent 1px),
+    #fff;
   background-size: 22px 100%;
 }
 
-.catea-yolo-window article h3 {
-  margin: 0 0 20px;
-  font-size: 22px;
-  letter-spacing: -0.03em;
+.catea-ob-breadcrumb {
+  margin: 0 0 18px;
+  color: #737e76;
+  font-size: 12px;
 }
 
-.catea-yolo-window blockquote {
+.catea-ob-note h3 {
+  margin: 0 0 20px;
+  color: #292d2b;
+  font-size: 28px;
+  font-weight: 760;
+  letter-spacing: -0.05em;
+}
+
+.catea-ob-note blockquote {
   margin: 0 0 25px;
   border-left: 2px solid var(--catea-accent);
   color: var(--catea-muted);
@@ -286,43 +408,156 @@ body {
   padding-left: 13px;
 }
 
-.catea-yolo-window ul {
+.catea-ob-note ul {
   margin: 13px 0 20px;
-  padding: 0;
-  list-style: none;
+  padding-left: 18px;
 }
 
-.catea-yolo-window li,
-.catea-yolo-window p {
+.catea-ob-note li,
+.catea-ob-note p {
   color: var(--catea-muted);
   font-size: 14px;
   line-height: 1.7;
 }
 
-.catea-yolo-window section {
+.catea-ob-agent {
+  display: flex;
+  flex-direction: column;
   border-left: 1px solid var(--catea-border);
-  background: rgba(22, 75, 56, 0.035);
+  background: #edf0ed;
 }
 
-.catea-yolo-window section div {
-  margin-top: 18px;
-  border: 1px solid var(--catea-border);
-  border-radius: 7px;
-  background: rgba(255, 255, 255, 0.72);
-  color: var(--catea-ink);
+.catea-ob-agent-header {
+  display: flex;
+  height: 44px;
+  min-height: 44px;
+  align-items: center;
+  gap: 7px;
+  padding: 0 10px;
+  color: #292d2b;
+}
+
+.catea-ob-agent-header strong {
+  flex: 1;
+  min-width: 0;
   font-size: 13px;
-  line-height: 1.55;
-  padding: 15px;
+  font-weight: 650;
 }
 
-.catea-yolo-window section div:last-child {
-  background: var(--catea-accent-soft);
-  color: var(--catea-accent);
+.catea-ob-agent-header span {
+  border-radius: 999px;
+  background: rgba(22, 75, 56, 0.08);
+  color: #164b38;
+  font-size: 10px;
+  font-weight: 650;
+  padding: 3px 7px;
 }
 
-.catea-yolo-window section strong {
+.catea-ob-agent-header button {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  min-width: 26px;
+  height: 26px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #737e76;
+}
+
+.catea-ob-agent-body {
+  display: grid;
+  flex: 1;
+  min-height: 0;
+  grid-template-columns: 128px minmax(0, 1fr);
+  border-top: 1px solid rgba(22, 75, 56, 0.08);
+}
+
+.catea-ob-history {
+  overflow: hidden;
+  border-right: 1px solid rgba(22, 75, 56, 0.1);
+  padding: 16px 10px;
+}
+
+.catea-ob-history h4 {
+  margin: 0 8px 12px;
+}
+
+.catea-ob-history p {
+  margin: 0 0 4px;
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.catea-ob-chat {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  background: #edf0ed;
+}
+
+.catea-ob-cat {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 24px;
+}
+
+.catea-ob-cat img {
   display: block;
-  margin-bottom: 8px;
+  width: min(160px, 52%);
+  height: auto;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.catea-ob-composer {
+  margin: 0 12px 14px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #f9faf9;
+  box-shadow: 0 12px 36px rgba(24, 45, 32, 0.12);
+}
+
+.catea-ob-composer p {
+  min-height: 66px;
+  margin: 0;
+  color: #737e76;
+  font-size: 13px;
+  line-height: 18.75px;
+  padding: 15px 15px 11px 18px;
+}
+
+.catea-ob-composer div {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  gap: 5px;
+  border-top: 1px solid rgba(22, 75, 56, 0.08);
+  padding: 7px;
+}
+
+.catea-ob-composer span {
+  border-radius: 6px;
+  color: #737e76;
+  font-size: 11px;
+  padding: 5px 7px;
+}
+
+.catea-ob-composer button {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  margin-left: auto;
+  border: 0;
+  border-radius: 999px;
+  background: #292d2b;
+  color: #f9faf9;
 }
 
 .catea-yolo-section {
