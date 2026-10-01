@@ -6,6 +6,303 @@ body {
   min-height: 100vh;
 }
 
+/* Catea public website theme
+   Mirrors the plugin design-system tokens instead of ad-hoc brand colors. */
+.catea-site {
+  --catea-canvas: #edf0ed;
+  --catea-paper: #ffffff;
+  --catea-ink: #292d2b;
+  --catea-muted: #737e76;
+  --catea-accent: #164b38;
+  --catea-accent-hover: #103b2c;
+  --catea-border: rgba(22, 75, 56, 0.12);
+  --catea-selected: rgba(22, 75, 56, 0.08);
+  --catea-radius-sm: 6px;
+  --catea-radius-md: 10px;
+  --catea-radius-lg: 14px;
+  --catea-space-2: 8px;
+  --catea-space-3: 12px;
+  --catea-space-4: 16px;
+  --catea-space-6: 24px;
+  --catea-shadow-sm: 0 1px 3px #182d2010;
+  --catea-shadow-md: 0 3px 12px #182d2014;
+  --catea-font: -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", sans-serif;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 14% 2%, color-mix(in srgb, var(--catea-accent) 10%, transparent), transparent 34rem),
+    linear-gradient(180deg, var(--catea-canvas), color-mix(in srgb, var(--catea-paper) 52%, var(--catea-canvas)));
+  color: var(--catea-ink);
+  font-family: var(--catea-font);
+}
+
+.catea-site-shell {
+  min-height: 100vh;
+}
+
+.catea-site-header {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  border-bottom: 1px solid var(--catea-border);
+  background: color-mix(in srgb, var(--catea-canvas) 88%, transparent);
+  backdrop-filter: blur(18px);
+}
+
+.catea-brand {
+  color: var(--catea-ink);
+  font-size: 22px;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+}
+
+.catea-nav {
+  color: var(--catea-muted);
+  font-size: 14px;
+}
+
+.catea-nav a,
+.catea-text-link {
+  color: var(--catea-muted);
+}
+
+.catea-nav a:hover,
+.catea-nav a.is-active,
+.catea-text-link:hover {
+  color: var(--catea-accent);
+}
+
+.catea-nav a.is-active {
+  font-weight: 600;
+}
+
+.catea-button-primary.rt-BaseButton {
+  background: var(--catea-accent);
+  color: var(--catea-paper);
+  box-shadow: var(--catea-shadow-sm);
+}
+
+.catea-button-primary.rt-BaseButton:hover {
+  background: var(--catea-accent-hover);
+}
+
+.catea-button-ghost.rt-BaseButton,
+.catea-button-outline.rt-BaseButton {
+  border: 1px solid var(--catea-border);
+  background: color-mix(in srgb, var(--catea-paper) 70%, transparent);
+  color: var(--catea-accent);
+  box-shadow: none;
+}
+
+.catea-button-ghost.rt-BaseButton:hover,
+.catea-button-outline.rt-BaseButton:hover {
+  background: var(--catea-selected);
+}
+
+.catea-badge.rt-Badge {
+  border: 1px solid var(--catea-border);
+  background: var(--catea-selected);
+  color: var(--catea-accent);
+  box-shadow: none;
+}
+
+.catea-hero-section {
+  padding-top: 76px;
+  padding-bottom: 76px;
+}
+
+.catea-hero-title {
+  margin-top: var(--catea-space-6);
+  color: var(--catea-ink);
+  font-size: clamp(44px, 8vw, 78px);
+  font-weight: 680;
+  letter-spacing: -0.065em;
+  line-height: 0.96;
+}
+
+.catea-hero-lead {
+  margin-top: var(--catea-space-6);
+  max-width: 64ch;
+  color: var(--catea-muted);
+  font-size: clamp(17px, 2vw, 20px);
+  line-height: 1.75;
+}
+
+.catea-small-muted {
+  color: var(--catea-muted);
+  font-size: 13px;
+}
+
+.catea-preview-card.rt-Card,
+.catea-info-card.rt-Card,
+.catea-panel.rt-Card,
+.catea-policy-card.rt-Card {
+  border: 1px solid var(--catea-border);
+  background: color-mix(in srgb, var(--catea-paper) 92%, transparent);
+  box-shadow: var(--catea-shadow-md);
+}
+
+.catea-preview-card.rt-Card {
+  border-radius: calc(var(--catea-radius-lg) + 12px);
+  padding: var(--catea-space-3);
+  transform: rotate(1deg);
+}
+
+.catea-preview-window {
+  min-height: 420px;
+  border-radius: calc(var(--catea-radius-lg) + 4px);
+  background: var(--catea-ink);
+  color: var(--catea-paper);
+  padding: 26px;
+}
+
+.catea-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--catea-paper) 48%, var(--catea-muted));
+}
+
+.catea-dot:nth-child(2) {
+  background: color-mix(in srgb, var(--catea-accent) 50%, var(--catea-paper));
+}
+
+.catea-dot:nth-child(3) {
+  background: color-mix(in srgb, var(--catea-accent) 72%, var(--catea-paper));
+}
+
+.catea-preview-tile {
+  border: 1px solid color-mix(in srgb, var(--catea-paper) 12%, transparent);
+  border-radius: var(--catea-radius-lg);
+  background: color-mix(in srgb, var(--catea-paper) 8%, transparent);
+  padding: var(--catea-space-4);
+}
+
+.catea-preview-tile p {
+  color: color-mix(in srgb, var(--catea-paper) 72%, var(--catea-muted));
+}
+
+.catea-preview-tile-strong {
+  border-color: color-mix(in srgb, var(--catea-accent) 28%, var(--catea-paper));
+  background: color-mix(in srgb, var(--catea-accent) 24%, transparent);
+}
+
+.catea-preview-tile-paper {
+  background: var(--catea-paper);
+  color: var(--catea-ink);
+}
+
+.catea-preview-tile-paper p {
+  color: var(--catea-muted);
+}
+
+.catea-content-section {
+  padding-top: 42px;
+  padding-bottom: 42px;
+}
+
+.catea-kicker {
+  margin-bottom: var(--catea-space-2);
+  color: var(--catea-accent);
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+
+.catea-section-title {
+  margin-bottom: 28px;
+  color: var(--catea-ink);
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+}
+
+.catea-info-card.rt-Card,
+.catea-panel.rt-Card {
+  border-radius: calc(var(--catea-radius-lg) + 10px);
+  padding: 24px;
+}
+
+.catea-info-card h3,
+.catea-panel h3,
+.catea-policy-card h2 {
+  color: var(--catea-ink);
+}
+
+.catea-info-card p,
+.catea-panel p,
+.catea-policy-card p,
+.catea-policy-card li,
+.catea-site-footer p {
+  color: var(--catea-muted);
+  line-height: 1.75;
+}
+
+.catea-policy-title {
+  margin-top: var(--catea-space-6);
+  color: var(--catea-ink);
+  font-size: clamp(38px, 6vw, 60px);
+  font-weight: 680;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.catea-policy-intro {
+  margin-top: var(--catea-space-6);
+  max-width: 66ch;
+  color: var(--catea-muted);
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.catea-policy-card.rt-Card {
+  margin-top: 36px;
+  border-radius: calc(var(--catea-radius-lg) + 10px);
+  padding: clamp(22px, 5vw, 44px);
+}
+
+.catea-policy-section ul {
+  margin: 16px 0 0;
+  padding-left: 1.25rem;
+}
+
+.catea-policy-section li {
+  margin-top: 10px;
+}
+
+.catea-policy-card .rt-Separator {
+  background-color: var(--catea-border);
+}
+
+.catea-site-footer {
+  margin-top: 48px;
+  border-top: 1px solid var(--catea-border);
+  background: color-mix(in srgb, var(--catea-paper) 58%, transparent);
+}
+
+.catea-site-footer h2,
+.catea-site-footer h3 {
+  color: var(--catea-ink);
+}
+
+.catea-footer-intro {
+  grid-column: span 2;
+}
+
+@media (max-width: 767px) {
+  .catea-nav {
+    display: none;
+  }
+
+  .catea-button-primary.rt-BaseButton {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .catea-footer-intro {
+    grid-column: span 1;
+  }
+}
+
 /* Wired Elements 适配 */
 wired-button, wired-input, wired-card, wired-checkbox {
   font-family: inherit;
