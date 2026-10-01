@@ -231,7 +231,7 @@ function getInitialLang() {
   if (typeof window === 'undefined') return 'en'
   const stored = window.localStorage.getItem('catea-site-lang')
   if (stored === 'en' || stored === 'zh') return stored
-  return window.navigator.language?.toLowerCase().startsWith('zh') ? 'zh' : 'en'
+  return 'en'
 }
 
 export default function PublicSite({ route = '/' }) {
