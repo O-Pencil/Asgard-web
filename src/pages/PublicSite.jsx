@@ -24,10 +24,11 @@ import {
 import '@radix-ui/themes/styles.css'
 
 const SITE_URL = 'https://catea.pencil.chat'
-const SUPPORT_EMAIL = 'support@pencil.chat'
-const PRIVACY_EMAIL = 'privacy@pencil.chat'
-const SAFETY_EMAIL = 'safety@pencil.chat'
-const BILLING_EMAIL = 'billing@pencil.chat'
+const OFFICIAL_EMAIL = 'support@pencil.chat'
+const SUPPORT_EMAIL = OFFICIAL_EMAIL
+const PRIVACY_EMAIL = OFFICIAL_EMAIL
+const SAFETY_EMAIL = OFFICIAL_EMAIL
+const BILLING_EMAIL = OFFICIAL_EMAIL
 const LAST_UPDATED = 'October 1, 2026'
 
 const copy = {
@@ -35,10 +36,12 @@ const copy = {
     langLabel: '中文',
     nav: { product: 'Product', privacy: 'Privacy', terms: 'Terms', aup: 'Acceptable Use', support: 'Contact support' },
     footer: {
-      title: 'Catea by Pencil',
+      title: 'Catea',
       body: 'A desktop AI workspace for Obsidian users. Catea Pro is delivered digitally through the Catea Obsidian plugin and the Catea hosted model service.',
       contact: 'Contact',
       legal: 'Legal',
+      copy: 'Copy email',
+      copied: 'Copied',
     },
     home: {
       eyebrow: 'Obsidian AI workspace · SaaS subscription',
@@ -83,7 +86,7 @@ const copy = {
           cards: [
             {
               title: 'Independent brand',
-              body: 'Catea is not marketed as an official application of any model provider. The product is a Pencil/Catea workspace and subscription service.',
+              body: 'Catea is not marketed as an official application of any model provider. The product is an independent Catea workspace and subscription service.',
             },
             {
               title: 'Clear AI disclosure',
@@ -95,7 +98,7 @@ const copy = {
             },
             {
               title: 'Human contact channel',
-              body: 'Reports, appeals, billing issues, and privacy requests can be sent to monitored Pencil email addresses listed on this website.',
+              body: 'Reports, appeals, billing issues, and privacy requests can be sent to the official support email listed on this website.',
             },
           ],
         },
@@ -113,7 +116,7 @@ const copy = {
         {
           title: '1. Controller and contact',
           body: [
-            `Catea is operated as part of the Pencil independent developer project. Website: ${SITE_URL}. Privacy requests can be sent to ${PRIVACY_EMAIL}. We have not appointed a formal data protection officer.`,
+            `Catea is operated as an independent software project. Website: ${SITE_URL}. Privacy requests can be sent to ${PRIVACY_EMAIL}. We have not appointed a formal data protection officer.`,
           ],
         },
         {
@@ -143,7 +146,7 @@ const copy = {
           body: [
             'We share payment-related information with our payment processor only as needed to complete billing and subscription management. We may also use hosting, database, and email providers to operate the service.',
             'Subscription records are kept while the account is active and for a reasonable period afterwards for tax, fraud-prevention, audit, and dispute purposes. Logs are kept only as long as needed for security and debugging.',
-            `You may request access, correction, deletion, or export by emailing ${PRIVACY_EMAIL}. Some records may be retained where required for legal, tax, security, or dispute reasons.`,
+            `You may request access, correction, deletion, or export by contacting ${PRIVACY_EMAIL}. Some records may be retained where required for legal, tax, security, or dispute reasons.`,
           ],
         },
       ],
@@ -214,10 +217,12 @@ const copy = {
     langLabel: 'EN',
     nav: { product: '产品', privacy: '隐私', terms: '条款', aup: 'AI 使用规范', support: '联系支持' },
     footer: {
-      title: 'Catea by Pencil',
+      title: 'Catea',
       body: '面向 Obsidian 用户的桌面 AI 工作区。Catea Pro 通过 Catea Obsidian 插件和 Catea 托管模型服务以数字方式交付。',
       contact: '联系方式',
       legal: '法律信息',
+      copy: '复制邮箱',
+      copied: '已复制',
     },
     home: {
       eyebrow: 'Obsidian AI 工作区 · SaaS 订阅',
@@ -262,14 +267,14 @@ const copy = {
           cards: [
             {
               title: '独立品牌',
-              body: 'Catea 不会被宣传为任何模型提供商的官方应用。它是 Pencil/Catea 提供的工作区和订阅服务。',
+              body: 'Catea 不会被宣传为任何模型提供商的官方应用。它是独立的 Catea 工作区和订阅服务。',
             },
             { title: '清晰的 AI 提醒', body: '助手回复由 AI 生成，可能不准确。用户在用于重要决策前需要自行检查。' },
             {
               title: '内容限制',
               body: '我们禁止色情、血腥暴力、仇恨、儿童安全违规、未经同意的深度伪造、冒充和知识产权滥用。',
             },
-            { title: '人工联系渠道', body: '举报、申诉、账单问题和隐私请求都可以发送到本网站列出的 Pencil 邮箱。' },
+            { title: '人工联系渠道', body: '举报、申诉、账单问题和隐私请求都可以发送到本网站列出的官方支持邮箱。' },
           ],
         },
       ],
@@ -286,7 +291,7 @@ const copy = {
         {
           title: '1. 控制者和联系方式',
           body: [
-            `Catea 由 Pencil 独立开发者项目运营。网站：${SITE_URL}。隐私请求可发送至 ${PRIVACY_EMAIL}。我们目前没有任命正式的数据保护官。`,
+            `Catea 由独立软件项目运营。网站：${SITE_URL}。隐私请求可发送至 ${PRIVACY_EMAIL}。我们目前没有任命正式的数据保护官。`,
           ],
         },
         {
@@ -311,7 +316,7 @@ const copy = {
           body: [
             '我们只会在完成账单和订阅管理所需范围内，与支付处理方共享支付相关信息。我们也可能使用托管、数据库和邮件服务商来运行服务。',
             '订阅记录会在账户有效期间以及之后的合理期限内保留，用于税务、反欺诈、审计和争议处理。日志仅在安全和调试所需期限内保留。',
-            `你可以通过 ${PRIVACY_EMAIL} 请求访问、更正、删除或导出数据。出于法律、税务、安全或争议原因，部分记录可能需要继续保留。`,
+            `你可以联系 ${PRIVACY_EMAIL} 请求访问、更正、删除或导出数据。出于法律、税务、安全或争议原因，部分记录可能需要继续保留。`,
           ],
         },
       ],
@@ -419,26 +424,22 @@ function PublicShell({ children, active, site }) {
       <Box asChild className="catea-site-header">
         <header>
           <Container size="4" px="5">
-            <Flex height="64px" align="center" justify="between" gap="4">
+            <Flex className="catea-header-row" align="center" justify="between" gap="4">
               <Link href="/" className="catea-brand" underline="none">
                 Catea
               </Link>
-              <Flex asChild align="center" gap="5" className="catea-nav">
-                <nav>
-                  {nav.map(item => (
-                    <Link key={item.key} href={item.href} underline="none" className={active === item.key ? 'is-active' : undefined}>
-                      {item.label}
-                    </Link>
-                  ))}
-                </nav>
-              </Flex>
-              <Flex align="center" gap="2">
+              <nav className="catea-nav">
+                {nav.map(item => (
+                  <Link key={item.key} href={item.href} underline="none" className={active === item.key ? 'is-active' : undefined}>
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+              <Flex align="center" gap="2" className="catea-header-actions">
                 <Button variant="soft" className="catea-button-ghost" onClick={() => setLang(lang === 'en' ? 'zh' : 'en')}>
                   {t.langLabel}
                 </Button>
-                <Button asChild className="catea-button-primary">
-                  <a href={`mailto:${SUPPORT_EMAIL}`}>{t.nav.support}</a>
-                </Button>
+                <ContactAction label={t.nav.support} copiedLabel={t.footer.copied} />
               </Flex>
             </Flex>
           </Container>
@@ -460,9 +461,9 @@ function PublicShell({ children, active, site }) {
               <Heading as="h3" size="3" mb="3">
                 {t.footer.contact}
               </Heading>
-              <FooterLink label="Support" href={`mailto:${SUPPORT_EMAIL}`} />
-              <FooterLink label="Billing" href={`mailto:${BILLING_EMAIL}`} />
-              <FooterLink label="Safety" href={`mailto:${SAFETY_EMAIL}`} />
+              <ContactRow label="Support" email={SUPPORT_EMAIL} copiedLabel={t.footer.copied} actionLabel={t.footer.copy} />
+              <ContactRow label="Billing" email={BILLING_EMAIL} copiedLabel={t.footer.copied} actionLabel={t.footer.copy} />
+              <ContactRow label="Safety" email={SAFETY_EMAIL} copiedLabel={t.footer.copied} actionLabel={t.footer.copy} />
             </Box>
             <Box>
               <Heading as="h3" size="3" mb="3">
@@ -489,6 +490,56 @@ function FooterLink({ label, href }) {
   )
 }
 
+function ContactAction({ label, copiedLabel }) {
+  const [copied, setCopied] = useState(false)
+
+  async function copyEmail() {
+    try {
+      await navigator.clipboard.writeText(OFFICIAL_EMAIL)
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 1800)
+    } catch {
+      window.alert(OFFICIAL_EMAIL)
+    }
+  }
+
+  return (
+    <Button className="catea-button-primary" onClick={copyEmail}>
+      {copied ? copiedLabel : label}
+    </Button>
+  )
+}
+
+function ContactRow({ label, email, copiedLabel, actionLabel }) {
+  const [copied, setCopied] = useState(false)
+
+  async function copyEmail() {
+    try {
+      await navigator.clipboard.writeText(email)
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 1800)
+    } catch {
+      window.alert(email)
+    }
+  }
+
+  return (
+    <Flex align="center" justify="between" gap="3" className="catea-contact-row">
+      <Box>
+        <Text as="div" size="2" weight="medium">
+          {label}
+        </Text>
+        <Text as="div" size="2">
+          {email}
+        </Text>
+      </Box>
+      <Button size="1" variant="soft" className="catea-button-ghost" onClick={copyEmail}>
+        {copied ? copiedLabel : actionLabel}
+      </Button>
+    </Flex>
+  )
+}
+
 function HomePage({ site }) {
   const { t } = site
 
@@ -509,9 +560,7 @@ function HomePage({ site }) {
                 <Button asChild size="3" className="catea-button-primary">
                   <a href="/terms">{t.home.primary}</a>
                 </Button>
-                <Button asChild size="3" variant="outline" className="catea-button-outline">
-                  <a href={`mailto:${SUPPORT_EMAIL}`}>{t.home.secondary}</a>
-                </Button>
+                <ContactAction label={t.home.secondary} copiedLabel={t.footer.copied} />
               </Flex>
               <Text as="p" mt="5" className="catea-small-muted">
                 {t.home.review} <Text weight="medium">{SITE_URL}</Text>
