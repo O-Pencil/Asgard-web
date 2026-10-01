@@ -171,7 +171,108 @@ body {
 .catea-preview-card.rt-Card {
   border-radius: calc(var(--catea-radius-lg) + 12px);
   padding: var(--catea-space-3);
-  transform: rotate(1deg);
+  transform: rotate(0.8deg);
+}
+
+.catea-obsidian-mock {
+  overflow: hidden;
+  min-height: 440px;
+  border: 1px solid var(--catea-border);
+  border-radius: calc(var(--catea-radius-lg) + 4px);
+  background:
+    radial-gradient(circle at 75% 10%, var(--catea-selected), transparent 16rem),
+    linear-gradient(180deg, var(--catea-paper), color-mix(in srgb, var(--catea-canvas) 58%, var(--catea-paper)));
+  color: var(--catea-ink);
+}
+
+.catea-mock-titlebar {
+  min-height: 44px;
+  border-bottom: 1px solid var(--catea-border);
+  background: color-mix(in srgb, var(--catea-paper) 72%, transparent);
+  color: var(--catea-muted);
+  padding: 0 14px;
+}
+
+.catea-mock-grid {
+  display: grid;
+  grid-template-columns: 128px minmax(190px, 1fr) 190px;
+  min-height: 396px;
+}
+
+.catea-mock-sidebar,
+.catea-mock-note,
+.catea-mock-agent {
+  padding: 16px;
+}
+
+.catea-mock-sidebar {
+  border-right: 1px solid var(--catea-border);
+  background: color-mix(in srgb, var(--catea-canvas) 50%, var(--catea-paper));
+}
+
+.catea-mock-sidebar ul {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0 0;
+  padding: 0;
+  color: var(--catea-muted);
+  font-size: 12px;
+  list-style: none;
+}
+
+.catea-mock-note {
+  background: color-mix(in srgb, var(--catea-paper) 82%, transparent);
+}
+
+.catea-mock-note h2 {
+  margin-top: 16px;
+  color: var(--catea-ink);
+}
+
+.catea-mock-note p {
+  margin-top: 14px;
+  color: var(--catea-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.catea-mock-agent {
+  border-left: 1px solid var(--catea-border);
+  background: color-mix(in srgb, var(--catea-canvas) 64%, var(--catea-paper));
+}
+
+.catea-mock-label,
+.catea-feature-index {
+  color: var(--catea-muted);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.catea-mock-agent-title {
+  color: var(--catea-accent);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.catea-mock-bubble {
+  margin-top: 14px;
+  border: 1px solid var(--catea-border);
+  border-radius: var(--catea-radius-lg);
+  padding: 12px;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.catea-mock-bubble.is-user {
+  background: var(--catea-paper);
+  color: var(--catea-ink);
+}
+
+.catea-mock-bubble.is-agent {
+  background: var(--catea-selected);
+  color: var(--catea-accent);
 }
 
 .catea-preview-window {
@@ -248,14 +349,19 @@ body {
 }
 
 .catea-info-card.rt-Card,
-.catea-panel.rt-Card {
+.catea-panel.rt-Card,
+.catea-feature-card.rt-Card,
+.catea-plan-card.rt-Card,
+.catea-philosophy-card.rt-Card {
   border-radius: calc(var(--catea-radius-lg) + 10px);
   padding: 24px;
 }
 
 .catea-info-card h3,
 .catea-panel h3,
-.catea-policy-card h2 {
+.catea-policy-card h2,
+.catea-feature-card h3,
+.catea-plan-card h3 {
   color: var(--catea-ink);
 }
 
@@ -263,9 +369,70 @@ body {
 .catea-panel p,
 .catea-policy-card p,
 .catea-policy-card li,
-.catea-site-footer p {
+.catea-site-footer p,
+.catea-feature-card p,
+.catea-plan-card p,
+.catea-philosophy-card p {
   color: var(--catea-muted);
   line-height: 1.75;
+}
+
+.catea-feature-card.rt-Card,
+.catea-plan-card.rt-Card,
+.catea-philosophy-card.rt-Card {
+  border: 1px solid var(--catea-border);
+  background: color-mix(in srgb, var(--catea-paper) 88%, transparent);
+  box-shadow: var(--catea-shadow-sm);
+}
+
+.catea-feature-card.rt-Card {
+  min-height: 236px;
+}
+
+.catea-plan-card.rt-Card {
+  display: flex;
+  min-height: 410px;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.catea-plan-card.rt-Card.is-featured {
+  border-color: color-mix(in srgb, var(--catea-accent) 32%, var(--catea-border));
+  background:
+    radial-gradient(circle at 88% 0%, var(--catea-selected), transparent 14rem),
+    color-mix(in srgb, var(--catea-paper) 92%, transparent);
+}
+
+.catea-plan-price {
+  color: var(--catea-accent);
+  font-size: 38px;
+  font-weight: 680;
+  letter-spacing: -0.04em;
+}
+
+.catea-plan-card ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--catea-muted);
+  line-height: 1.6;
+}
+
+.catea-plan-card .rt-BaseButton {
+  margin-top: auto;
+  width: fit-content;
+}
+
+.catea-philosophy-card.rt-Card {
+  padding: clamp(24px, 5vw, 44px);
+}
+
+.catea-philosophy-card p {
+  max-width: 820px;
+  color: var(--catea-ink);
+  font-size: clamp(18px, 2.4vw, 24px);
+  line-height: 1.7;
 }
 
 .catea-policy-title {
@@ -346,6 +513,16 @@ body {
 
   .catea-footer-intro {
     grid-column: span 1;
+  }
+
+  .catea-mock-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .catea-mock-sidebar,
+  .catea-mock-agent {
+    border: 0;
+    border-top: 1px solid var(--catea-border);
   }
 }
 

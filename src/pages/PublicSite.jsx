@@ -34,7 +34,15 @@ const LAST_UPDATED = 'October 1, 2026'
 const copy = {
   en: {
     langLabel: '中文',
-    nav: { product: 'Product', privacy: 'Privacy', terms: 'Terms', aup: 'Acceptable Use', support: 'Contact support' },
+    nav: {
+      features: 'Features',
+      philosophy: 'Philosophy',
+      pricing: 'Pricing',
+      privacy: 'Privacy',
+      terms: 'Terms',
+      aup: 'Acceptable Use',
+      support: 'Contact support',
+    },
     footer: {
       title: 'Catea',
       body: 'A desktop AI workspace for Obsidian users. Catea Pro is delivered digitally through the Catea Obsidian plugin and the Catea hosted model service.',
@@ -44,70 +52,68 @@ const copy = {
       copied: 'Copied',
     },
     home: {
-      eyebrow: 'Local-first AI workspace for Obsidian',
-      title: 'Chat with your notes. Keep control of your vault.',
+      eyebrow: 'For Obsidian · Knowledge-first AI',
+      title: 'Make your knowledge think.',
       lead:
-        'Catea turns Obsidian into a paper-style AI workspace. Work locally with your own vault, bring your own model key for free, or use Catea Pro for hosted model access without extra setup.',
+        'Catea is an AI workspace built for Obsidian knowledge bases — helping you read, connect, write, and act across your vault without moving your work into another app.',
       primary: 'See plans',
       secondary: 'Contact support',
-      points: ['Desktop Obsidian plugin', 'Vault-local workspace', 'BYOK or hosted model', 'Memory and tools'],
+      points: ['Built for knowledge bases', 'Obsidian-native workflow', 'BYOK or Catea Pro', 'Reviewable note actions'],
       mock: {
-        pro: 'Catea workspace',
-        included: 'A focused AI layer inside Obsidian',
-        ask: 'Ask over your notes',
-        askBody: 'Read context, draft changes, and keep the conversation tied to your vault.',
-        quota: 'Choose your model path',
-        quotaBody: 'Use your own key on Free, or subscribe to Pro for managed hosted access.',
-        safe: 'Designed for ownership',
-        safeBody: 'Your workspace stays centered on Obsidian rather than a separate web app.',
+        vault: 'knowledge-vault',
+        activeNote: 'knowledge-os.md',
+        question: 'What is the strongest thread in my notes about knowledge work?',
+        answer:
+          'I found three recurring ideas: durable context, linked reasoning, and reviewable AI actions. Sources: [[ai-memory]], [[zettelkasten]], [[project-catea]].',
       },
-      sections: [
+      featuresKicker: 'Features',
+      featuresTitle: 'One plugin, built around your knowledge base.',
+      features: [
         {
-          kicker: 'Product and delivery',
-          title: 'What customers buy',
-          cards: [
-            {
-              title: 'Free',
-              body: 'Use the Catea Obsidian plugin with your own supported model API key. Your vault data stays on your device and in your Obsidian vault.',
-            },
-            {
-              title: 'Catea Pro — $3 / month',
-              body: 'A monthly digital subscription that unlocks hosted model access in the plugin. Delivery is instant after payment confirmation: refresh plan status in the plugin, then use the Catea model route.',
-            },
-            {
-              title: 'Catea hosted service',
-              body: 'Catea manages subscription state, entitlement checks, hosted model routing, and quota usage for Catea Pro. It does not sell a model API key for resale.',
-            },
-          ],
+          eyebrow: '01 / KNOWLEDGE WORKSPACE',
+          title: 'Knowledge-first workspace',
+          body: 'Catea is not a detached chatbot. It works around your vault, notes, links, sessions, and long-lived context.',
         },
         {
-          kicker: 'Trust and safety',
-          title: 'Built for responsible AI use',
-          cards: [
-            {
-              title: 'Independent brand',
-              body: 'Catea is not marketed as an official application of any model provider. The product is an independent Catea workspace and subscription service.',
-            },
-            {
-              title: 'Clear AI disclosure',
-              body: 'Assistant responses are AI-generated and may be inaccurate. Users should review outputs before relying on them for important decisions.',
-            },
-            {
-              title: 'Content restrictions',
-              body: 'We prohibit sexual content, graphic violence, hate, child-safety violations, non-consensual deepfakes, impersonation, and intellectual-property abuse.',
-            },
-            {
-              title: 'Human contact channel',
-              body: 'Reports, appeals, billing issues, and privacy requests can be sent to the official support email listed on this website.',
-            },
-          ],
+          eyebrow: '02 / VAULT CHAT',
+          title: 'Chat with your vault',
+          body: 'Ask across related notes, keep context traceable, and use your own knowledge as the ground for every answer.',
+        },
+        {
+          eyebrow: '03 / NOTE ACTIONS',
+          title: 'Act on notes, with review',
+          body: 'Draft, rewrite, create, and organize Markdown notes. Important vault changes stay reviewable before they land.',
+        },
+        {
+          eyebrow: '04 / MODEL CHOICE',
+          title: 'BYOK or Catea Pro',
+          body: 'Use your own API key on Free, or activate Catea Pro for hosted model access and managed usage inside the plugin.',
         },
       ],
-      billingTitle: 'Billing, refunds, and support',
-      billingKicker: 'Customer information',
-      billingBody:
-        'Catea Pro is billed monthly. Users may cancel future renewal by contacting billing support. If a customer cannot access the paid service after a successful payment, or was charged twice for the same billing period, they may request help or a refund review within 7 days.',
-      billingNote: 'Payment card details are handled by Waffo Pancake and are not stored on Catea servers.',
+      philosophyKicker: 'Philosophy',
+      philosophyTitle: 'Bring AI into your knowledge base — not your knowledge into another app.',
+      philosophyBody:
+        'Your notes are the system of record. Catea keeps the workspace centered on Obsidian, so AI becomes a way to understand and shape your knowledge rather than a place where your knowledge disappears.',
+      pricingKicker: 'Pricing',
+      pricingTitle: 'Start with your own model. Upgrade when you want it ready-made.',
+      plans: [
+        {
+          name: 'Free',
+          price: '$0',
+          description: 'For users who want full control over their own model setup.',
+          items: ['Base Catea workspace', 'Bring your own model API key', 'Vault-local sessions and memory', 'No hosted model included'],
+          action: 'Install in Obsidian',
+        },
+        {
+          name: 'Catea Pro',
+          price: '$3 / month',
+          description: 'For users who want Catea to provide the model route and managed quota.',
+          items: ['Everything in Free', 'Hosted model access', 'Monthly managed usage', 'Future premium knowledge features'],
+          action: 'Subscribe to Pro',
+          featured: true,
+        },
+      ],
+      billingNote: 'Catea Pro is billed monthly. Payment details are handled by Waffo Pancake and are not stored on Catea servers.',
     },
     privacy: {
       title: 'Privacy Policy',
@@ -215,7 +221,15 @@ const copy = {
   },
   zh: {
     langLabel: 'EN',
-    nav: { product: '产品', privacy: '隐私', terms: '条款', aup: 'AI 使用规范', support: '联系支持' },
+    nav: {
+      features: '功能',
+      philosophy: '理念',
+      pricing: '价格',
+      privacy: '隐私',
+      terms: '条款',
+      aup: 'AI 使用规范',
+      support: '联系支持',
+    },
     footer: {
       title: 'Catea',
       body: '面向 Obsidian 用户的桌面 AI 工作区。Catea Pro 通过 Catea Obsidian 插件和 Catea 托管模型服务以数字方式交付。',
@@ -225,64 +239,67 @@ const copy = {
       copied: '已复制',
     },
     home: {
-      eyebrow: '面向 Obsidian 的本地优先 AI 工作区',
-      title: '和你的笔记对话，同时保留对知识库的控制。',
+      eyebrow: 'For Obsidian · Knowledge-first AI',
+      title: 'Make your knowledge think.',
       lead:
-        'Catea 会把 Obsidian 变成纸张式 AI 工作区。你可以继续围绕自己的 vault 工作；免费版配置自己的模型 Key，Pro 版则直接使用 Catea 托管模型，省去额外配置。',
+        'Catea 是为 Obsidian 知识库打造的 AI 工作区，帮助你在 vault 中阅读、连接、写作和执行，而不是把知识搬到另一个应用里。',
       primary: '查看套餐',
       secondary: '联系支持',
-      points: ['桌面端 Obsidian 插件', '围绕 vault 的本地工作区', 'BYOK 或托管模型', '记忆与工具能力'],
+      points: ['为知识库打造', 'Obsidian 原生工作流', 'BYOK 或 Catea Pro', '可审阅的笔记操作'],
       mock: {
-        pro: 'Catea workspace',
-        included: '在 Obsidian 内部工作的专注 AI 层',
-        ask: '围绕你的笔记提问',
-        askBody: '读取上下文、草拟修改，并让对话始终围绕你的 vault 展开。',
-        quota: '自由选择模型路径',
-        quotaBody: 'Free 使用自己的 Key；Pro 使用 Catea 管理的托管模型入口。',
-        safe: '为知识所有权设计',
-        safeBody: '工作区以 Obsidian 为中心，而不是把你带到另一个网页应用。',
+        vault: 'knowledge-vault',
+        activeNote: 'knowledge-os.md',
+        question: '我的知识工作笔记里，最核心的线索是什么？',
+        answer: '我找到了三个反复出现的主题：持久上下文、链接式推理、可审阅的 AI 行动。来源：[[ai-memory]]、[[zettelkasten]]、[[project-catea]]。',
       },
-      sections: [
+      featuresKicker: 'Features',
+      featuresTitle: '一个围绕知识库打造的插件。',
+      features: [
         {
-          kicker: '产品与交付',
-          title: '用户购买的内容',
-          cards: [
-            {
-              title: 'Free',
-              body: '使用 Catea Obsidian 插件，并配置你自己的模型 API Key。知识库数据保留在你的设备和 Obsidian vault 中。',
-            },
-            {
-              title: 'Catea Pro — 每月 3 美元',
-              body: '按月计费的数字订阅，在插件中解锁托管模型。支付成功后，在插件里刷新套餐状态即可使用 Catea 模型入口。',
-            },
-            {
-              title: 'Catea 托管服务',
-              body: 'Catea 负责订阅状态、权益校验、托管模型转发和额度管理。我们不售卖或转售模型 API Key。',
-            },
-          ],
+          eyebrow: '01 / KNOWLEDGE WORKSPACE',
+          title: '知识优先的工作区',
+          body: 'Catea 不是一个孤立聊天框。它围绕你的 vault、笔记、链接、会话和长期上下文工作。',
         },
         {
-          kicker: '信任与安全',
-          title: '为负责任的 AI 使用而设计',
-          cards: [
-            {
-              title: '独立品牌',
-              body: 'Catea 不会被宣传为任何模型提供商的官方应用。它是独立的 Catea 工作区和订阅服务。',
-            },
-            { title: '清晰的 AI 提醒', body: '助手回复由 AI 生成，可能不准确。用户在用于重要决策前需要自行检查。' },
-            {
-              title: '内容限制',
-              body: '我们禁止色情、血腥暴力、仇恨、儿童安全违规、未经同意的深度伪造、冒充和知识产权滥用。',
-            },
-            { title: '人工联系渠道', body: '举报、申诉、账单问题和隐私请求都可以发送到本网站列出的官方支持邮箱。' },
-          ],
+          eyebrow: '02 / VAULT CHAT',
+          title: '和你的知识库对话',
+          body: '跨相关笔记提问，让上下文可追溯，并把你已有的知识作为回答的基础。',
+        },
+        {
+          eyebrow: '03 / NOTE ACTIONS',
+          title: '让 AI 参与整理和写作',
+          body: '草拟、改写、创建和整理 Markdown 笔记。重要的 vault 修改都保留可审阅步骤。',
+        },
+        {
+          eyebrow: '04 / MODEL CHOICE',
+          title: 'BYOK 或 Catea Pro',
+          body: '免费版使用你自己的 API Key；Pro 版直接启用 Catea 托管模型和额度管理。',
         },
       ],
-      billingTitle: '账单、退款和支持',
-      billingKicker: '客户信息',
-      billingBody:
-        'Catea Pro 按月计费。用户可以联系账单支持取消后续续费。如果支付成功后无法访问付费服务，或同一账期被重复扣费，可在 7 天内请求帮助或退款审核。',
-      billingNote: '银行卡等支付信息由 Waffo Pancake 处理，不保存在 Catea 服务器上。',
+      philosophyKicker: 'Philosophy',
+      philosophyTitle: '把 AI 带进你的知识库，而不是把知识搬到另一个应用。',
+      philosophyBody:
+        '你的笔记才是系统的中心。Catea 让工作区继续围绕 Obsidian 展开，让 AI 成为理解和塑造知识的方式，而不是吞掉知识的地方。',
+      pricingKicker: 'Pricing',
+      pricingTitle: '先用自己的模型开始，需要开箱即用时再升级。',
+      plans: [
+        {
+          name: 'Free',
+          price: '$0',
+          description: '适合想完全控制模型配置的用户。',
+          items: ['基础 Catea 工作区', '配置自己的模型 API Key', 'vault 本地会话与记忆', '不包含托管模型'],
+          action: '在 Obsidian 中安装',
+        },
+        {
+          name: 'Catea Pro',
+          price: '$3 / 月',
+          description: '适合希望由 Catea 提供模型入口和额度管理的用户。',
+          items: ['包含 Free 的全部能力', '托管模型访问', '月度托管用量', '未来高级知识功能'],
+          action: '订阅 Pro',
+          featured: true,
+        },
+      ],
+      billingNote: 'Catea Pro 按月计费。支付信息由 Waffo Pancake 处理，不保存在 Catea 服务器上。',
     },
     privacy: {
       title: '隐私政策',
@@ -413,10 +430,9 @@ export default function PublicSite({ route = '/' }) {
 function PublicShell({ children, active, site }) {
   const { lang, setLang, t } = site
   const nav = [
-    { key: 'home', label: t.nav.product, href: '/' },
-    { key: 'privacy', label: t.nav.privacy, href: '/privacy' },
-    { key: 'terms', label: t.nav.terms, href: '/terms' },
-    { key: 'aup', label: t.nav.aup, href: '/acceptable-use' },
+    { key: 'features', label: t.nav.features, href: '/#features' },
+    { key: 'philosophy', label: t.nav.philosophy, href: '/#philosophy' },
+    { key: 'pricing', label: t.nav.pricing, href: '/#pricing' },
   ]
 
   return (
@@ -558,7 +574,7 @@ function HomePage({ site }) {
               </Text>
               <Flex mt="6" gap="3" wrap="wrap">
                 <Button asChild size="3" className="catea-button-primary">
-                  <a href="#plans">{t.home.primary}</a>
+                  <a href="#pricing">{t.home.primary}</a>
                 </Button>
                 <ContactAction label={t.home.secondary} copiedLabel={t.footer.copied} />
               </Flex>
@@ -573,67 +589,153 @@ function HomePage({ site }) {
         </Container>
       </Section>
 
-      {t.home.sections.map((section, index) => (
-        <ContentSection key={section.title} id={index === 0 ? 'plans' : undefined} kicker={section.kicker} title={section.title}>
-          <Grid columns={{ initial: '1', md: section.cards.length === 3 ? '3' : '2' }} gap="5">
-            {section.cards.map(card => (
-              <InfoCard key={card.title} title={card.title}>
-                {card.body}
-              </InfoCard>
-            ))}
-          </Grid>
-        </ContentSection>
-      ))}
+      <ContentSection id="features" kicker={t.home.featuresKicker} title={t.home.featuresTitle}>
+        <Grid columns={{ initial: '1', sm: '2', lg: '4' }} gap="5">
+          {t.home.features.map(feature => (
+            <FeatureCard key={feature.title} feature={feature} />
+          ))}
+        </Grid>
+      </ContentSection>
 
-      <ContentSection kicker={t.home.billingKicker} title={t.home.billingTitle}>
-        <Card className="catea-panel">
-          <Text as="p">{t.home.billingBody}</Text>
-          <Text as="p" mt="4">
-            {t.home.billingNote}
-          </Text>
+      <ContentSection id="philosophy" kicker={t.home.philosophyKicker} title={t.home.philosophyTitle}>
+        <Card className="catea-philosophy-card">
+          <Text as="p">{t.home.philosophyBody}</Text>
         </Card>
       </ContentSection>
+
+      <ContentSection id="pricing" kicker={t.home.pricingKicker} title={t.home.pricingTitle}>
+        <Grid columns={{ initial: '1', md: '2' }} gap="5">
+          {t.home.plans.map(plan => (
+            <PlanCard key={plan.name} plan={plan} />
+          ))}
+        </Grid>
+        <Text as="p" mt="4" className="catea-small-muted">
+          {t.home.billingNote}
+        </Text>
+      </ContentSection>
+
+      <Section size="3" className="catea-final-cta">
+        <Container size="4" px="5">
+          <Card className="catea-panel">
+            <Flex align={{ initial: 'start', md: 'center' }} justify="between" gap="5" direction={{ initial: 'column', md: 'row' }}>
+              <Box>
+                <Heading as="h2" size="7">
+                  {t.home.title}
+                </Heading>
+                <Text as="p" mt="2">
+                  {t.home.lead}
+                </Text>
+              </Box>
+              <Button asChild size="3" className="catea-button-primary">
+                <a href="#pricing">{t.home.primary}</a>
+              </Button>
+            </Flex>
+          </Card>
+        </Container>
+      </Section>
     </main>
+  )
+}
+
+function FeatureCard({ feature }) {
+  return (
+    <Card className="catea-feature-card">
+      <Text as="div" className="catea-feature-index">
+        {feature.eyebrow}
+      </Text>
+      <Heading as="h3" size="4" mt="4" mb="3">
+        {feature.title}
+      </Heading>
+      <Text as="p">{feature.body}</Text>
+    </Card>
+  )
+}
+
+function PlanCard({ plan }) {
+  return (
+    <Card className={plan.featured ? 'catea-plan-card is-featured' : 'catea-plan-card'}>
+      <Flex justify="between" align="start" gap="4">
+        <Box>
+          <Heading as="h3" size="5">
+            {plan.name}
+          </Heading>
+          <Text as="p" mt="2">
+            {plan.description}
+          </Text>
+        </Box>
+        {plan.featured && <Badge className="catea-badge">Pro</Badge>}
+      </Flex>
+      <Text as="div" className="catea-plan-price">
+        {plan.price}
+      </Text>
+      <ul>
+        {plan.items.map(item => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+      <Button asChild className={plan.featured ? 'catea-button-primary' : 'catea-button-outline'}>
+        <a href={plan.featured ? '#' : '#features'}>{plan.action}</a>
+      </Button>
+    </Card>
   )
 }
 
 function ProductPreview({ t }) {
   return (
     <Card className="catea-preview-card">
-      <Box className="catea-preview-window">
-        <Flex gap="2" mb="6">
-          <span className="catea-dot" />
-          <span className="catea-dot" />
-          <span className="catea-dot" />
+      <Box className="catea-obsidian-mock">
+        <Flex align="center" justify="between" className="catea-mock-titlebar">
+          <Flex align="center" gap="2">
+            <span className="catea-dot" />
+            <span className="catea-dot" />
+            <span className="catea-dot" />
+          </Flex>
+          <Text as="div" size="2">
+            obsidian — {t.vault}
+          </Text>
         </Flex>
-        <Flex direction="column" gap="4">
-          <Box className="catea-preview-tile catea-preview-tile-strong">
-            <Text as="div" size="2">
-              {t.pro}
+        <Grid className="catea-mock-grid">
+          <Box className="catea-mock-sidebar">
+            <Text as="div" className="catea-mock-label">
+              FILES
             </Text>
-            <Heading as="h2" size="6" mt="1">
-              {t.included}
+            <ul>
+              <li>▾ {t.vault}</li>
+              <li>— index.md</li>
+              <li>— ai-memory.md</li>
+              <li>— zettelkasten.md</li>
+              <li>— project-catea.md</li>
+            </ul>
+          </Box>
+          <Box className="catea-mock-note">
+            <Text as="div" className="catea-mock-label">
+              {t.activeNote}
+            </Text>
+            <Heading as="h2" size="5">
+              ## Knowledge OS
             </Heading>
-          </Box>
-          <Box className="catea-preview-tile catea-preview-tile-paper">
-            <Text weight="medium">{t.ask}</Text>
-            <Text as="p" size="2" mt="1">
-              {t.askBody}
+            <Text as="p">
+              Knowledge becomes useful when it can be recalled, connected, and turned into careful action.
+            </Text>
+            <Text as="p">
+              Related: [[ai-memory]], [[zettelkasten]], [[project-catea]]
             </Text>
           </Box>
-          <Box className="catea-preview-tile">
-            <Text weight="medium">{t.quota}</Text>
-            <Text as="p" size="2" mt="1">
-              {t.quotaBody}
+          <Box className="catea-mock-agent">
+            <Text as="div" className="catea-mock-agent-title">
+              Catea · Agent
             </Text>
+            <Box className="catea-mock-bubble is-user">
+              {t.question}
+            </Box>
+            <Box className="catea-mock-bubble is-agent">
+              <Text as="div" className="catea-mock-label">
+                AGENT · STREAMING
+              </Text>
+              {t.answer}
+            </Box>
           </Box>
-          <Box className="catea-preview-tile">
-            <Text weight="medium">{t.safe}</Text>
-            <Text as="p" size="2" mt="1">
-              {t.safeBody}
-            </Text>
-          </Box>
-        </Flex>
+        </Grid>
       </Box>
     </Card>
   )
@@ -652,17 +754,6 @@ function ContentSection({ id, kicker, title, children }) {
         {children}
       </Container>
     </Section>
-  )
-}
-
-function InfoCard({ title, children }) {
-  return (
-    <Card className="catea-info-card">
-      <Heading as="h3" size="4" mb="3">
-        {title}
-      </Heading>
-      <Text as="p">{children}</Text>
-    </Card>
   )
 }
 
