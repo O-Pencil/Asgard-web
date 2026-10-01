@@ -15,12 +15,12 @@ const copy = {
     lang: '中文',
     nav: { features: 'Features', pricing: 'Pricing', philosophy: 'Philosophy', get: 'Get Catea' },
     hero: {
-      eyebrow: 'For Obsidian · Knowledge-first AI',
-      titleTop: 'Make your knowledge',
-      titleBottom: 'think.',
-      lead: "The AI workspace for Obsidian knowledge bases — and everything you'll do with them.",
-      primary: 'See plans',
-      secondary: 'Features',
+      eyebrow: 'Catea for Obsidian',
+      titleHello: 'Hello,',
+      titleName: 'Catea.',
+      lead: 'make your knowledge think',
+      primary: 'Get Catea',
+      secondary: 'View docs',
     },
     mock: {
       title: 'obsidian — vault/knowledge-base',
@@ -79,12 +79,12 @@ const copy = {
     lang: 'EN',
     nav: { features: '功能', pricing: '价格', philosophy: '理念', get: 'Get Catea' },
     hero: {
-      eyebrow: 'For Obsidian · Knowledge-first AI',
-      titleTop: 'Make your knowledge',
-      titleBottom: 'think.',
-      lead: '为 Obsidian 知识库打造的 AI 工作区，以及你接下来会用它完成的一切。',
-      primary: '查看套餐',
-      secondary: '功能介绍',
+      eyebrow: 'Catea for Obsidian',
+      titleHello: 'Hello,',
+      titleName: 'Catea.',
+      lead: 'make your knowledge think',
+      primary: 'Get Catea',
+      secondary: '查看文档',
     },
     mock: {
       title: 'obsidian — vault/knowledge-base',
@@ -285,8 +285,11 @@ function Home({ t }) {
         <div className="catea-yolo-container">
           <p className="catea-yolo-eyebrow">{t.hero.eyebrow}</p>
           <h1>
-            <span>{t.hero.titleTop}</span>
-            <span>{t.hero.titleBottom}</span>
+            <span>{t.hero.titleHello}</span>
+            <span>
+              {t.hero.titleName}
+              <img className="catea-hero-cat" src="/cat-welcome.png" alt="" />
+            </span>
           </h1>
           <p className="catea-yolo-lead">{t.hero.lead}</p>
           <div className="catea-yolo-cta">
