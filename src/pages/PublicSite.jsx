@@ -38,10 +38,10 @@ const copy = {
       features: 'Features',
       philosophy: 'Philosophy',
       pricing: 'Pricing',
+      get: 'Get Catea',
       privacy: 'Privacy',
       terms: 'Terms',
       aup: 'Acceptable Use',
-      support: 'Contact support',
     },
     footer: {
       title: 'Catea',
@@ -57,7 +57,7 @@ const copy = {
       lead:
         'Catea is an AI workspace built for Obsidian knowledge bases — helping you read, connect, write, and act across your vault without moving your work into another app.',
       primary: 'See plans',
-      secondary: 'Contact support',
+      secondary: 'Features',
       points: ['Built for knowledge bases', 'Obsidian-native workflow', 'BYOK or Catea Pro', 'Reviewable note actions'],
       mock: {
         vault: 'knowledge-vault',
@@ -225,10 +225,10 @@ const copy = {
       features: '功能',
       philosophy: '理念',
       pricing: '价格',
+      get: 'Get Catea',
       privacy: '隐私',
       terms: '条款',
       aup: 'AI 使用规范',
-      support: '联系支持',
     },
     footer: {
       title: 'Catea',
@@ -244,7 +244,7 @@ const copy = {
       lead:
         'Catea 是为 Obsidian 知识库打造的 AI 工作区，帮助你在 vault 中阅读、连接、写作和执行，而不是把知识搬到另一个应用里。',
       primary: '查看套餐',
-      secondary: '联系支持',
+      secondary: '功能介绍',
       points: ['为知识库打造', 'Obsidian 原生工作流', 'BYOK 或 Catea Pro', '可审阅的笔记操作'],
       mock: {
         vault: 'knowledge-vault',
@@ -441,8 +441,9 @@ function PublicShell({ children, active, site }) {
         <header>
           <Container size="4" px="5">
             <Flex className="catea-header-row" align="center" justify="between" gap="4">
-              <Link href="/" className="catea-brand" underline="none">
-                Catea
+              <Link href="/" className="catea-brand" underline="none" aria-label="Catea home">
+                <span className="catea-brand-mark">C</span>
+                <span>Catea v1.0</span>
               </Link>
               <nav className="catea-nav">
                 {nav.map(item => (
@@ -455,7 +456,9 @@ function PublicShell({ children, active, site }) {
                 <Button variant="soft" className="catea-button-ghost" onClick={() => setLang(lang === 'en' ? 'zh' : 'en')}>
                   {t.langLabel}
                 </Button>
-                <ContactAction label={t.nav.support} copiedLabel={t.footer.copied} />
+                <Button asChild className="catea-button-primary">
+                  <a href="/#pricing">{t.nav.get}</a>
+                </Button>
               </Flex>
             </Flex>
           </Container>
@@ -475,11 +478,11 @@ function PublicShell({ children, active, site }) {
             </Box>
             <Box>
               <Heading as="h3" size="3" mb="3">
-                {t.footer.contact}
+                Product
               </Heading>
-              <ContactRow label="Support" email={SUPPORT_EMAIL} copiedLabel={t.footer.copied} actionLabel={t.footer.copy} />
-              <ContactRow label="Billing" email={BILLING_EMAIL} copiedLabel={t.footer.copied} actionLabel={t.footer.copy} />
-              <ContactRow label="Safety" email={SAFETY_EMAIL} copiedLabel={t.footer.copied} actionLabel={t.footer.copy} />
+              <FooterLink label={t.nav.features} href="/#features" />
+              <FooterLink label={t.nav.pricing} href="/#pricing" />
+              <FooterLink label={t.nav.philosophy} href="/#philosophy" />
             </Box>
             <Box>
               <Heading as="h3" size="3" mb="3">
@@ -506,56 +509,6 @@ function FooterLink({ label, href }) {
   )
 }
 
-function ContactAction({ label, copiedLabel }) {
-  const [copied, setCopied] = useState(false)
-
-  async function copyEmail() {
-    try {
-      await navigator.clipboard.writeText(OFFICIAL_EMAIL)
-      setCopied(true)
-      window.setTimeout(() => setCopied(false), 1800)
-    } catch {
-      window.alert(OFFICIAL_EMAIL)
-    }
-  }
-
-  return (
-    <Button className="catea-button-primary" onClick={copyEmail}>
-      {copied ? copiedLabel : label}
-    </Button>
-  )
-}
-
-function ContactRow({ label, email, copiedLabel, actionLabel }) {
-  const [copied, setCopied] = useState(false)
-
-  async function copyEmail() {
-    try {
-      await navigator.clipboard.writeText(email)
-      setCopied(true)
-      window.setTimeout(() => setCopied(false), 1800)
-    } catch {
-      window.alert(email)
-    }
-  }
-
-  return (
-    <Flex align="center" justify="between" gap="3" className="catea-contact-row">
-      <Box>
-        <Text as="div" size="2" weight="medium">
-          {label}
-        </Text>
-        <Text as="div" size="2">
-          {email}
-        </Text>
-      </Box>
-      <Button size="1" variant="soft" className="catea-button-ghost" onClick={copyEmail}>
-        {copied ? copiedLabel : actionLabel}
-      </Button>
-    </Flex>
-  )
-}
-
 function HomePage({ site }) {
   const { t } = site
 
@@ -563,29 +516,33 @@ function HomePage({ site }) {
     <main>
       <Section size="4" className="catea-hero-section">
         <Container size="4" px="5">
-          <Grid columns={{ initial: '1', md: '2' }} gap="8" align="center">
-            <Box>
-              <Badge className="catea-badge">{t.home.eyebrow}</Badge>
-              <Heading as="h1" className="catea-hero-title">
-                {t.home.title}
-              </Heading>
-              <Text as="p" className="catea-hero-lead">
-                {t.home.lead}
-              </Text>
-              <Flex mt="6" gap="3" wrap="wrap">
-                <Button asChild size="3" className="catea-button-primary">
-                  <a href="#pricing">{t.home.primary}</a>
-                </Button>
-                <ContactAction label={t.home.secondary} copiedLabel={t.footer.copied} />
-              </Flex>
-              <Flex mt="5" gap="2" wrap="wrap" className="catea-hero-points">
-                {t.home.points.map(point => (
-                  <span key={point}>{point}</span>
-                ))}
-              </Flex>
-            </Box>
+          <Box className="catea-hero-copy">
+            <Text as="div" className="catea-hero-eyebrow">
+              {t.home.eyebrow}
+            </Text>
+            <Heading as="h1" className="catea-hero-title">
+              {t.home.title}
+            </Heading>
+            <Text as="p" className="catea-hero-lead">
+              {t.home.lead}
+            </Text>
+            <Flex mt="6" gap="3" wrap="wrap" justify="center">
+              <Button asChild size="3" className="catea-button-primary">
+                <a href="#pricing">{t.home.primary}</a>
+              </Button>
+              <Button asChild size="3" className="catea-button-outline">
+                <a href="#features">{t.home.secondary}</a>
+              </Button>
+            </Flex>
+            <Flex mt="5" gap="2" wrap="wrap" justify="center" className="catea-hero-points">
+              {t.home.points.map(point => (
+                <span key={point}>{point}</span>
+              ))}
+            </Flex>
+          </Box>
+          <Box className="catea-screenshot-bg">
             <ProductPreview t={t.home.mock} />
-          </Grid>
+          </Box>
         </Container>
       </Section>
 
