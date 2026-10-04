@@ -756,6 +756,104 @@ body {
   text-align: center;
 }
 
+
+.catea-yolo-plan-note {
+  margin: 4px 0 0;
+  color: var(--catea-accent) !important;
+  font-size: 12px !important;
+  font-weight: 800;
+}
+
+.catea-yolo-credit-panel {
+  margin-top: 18px;
+  padding: 30px;
+  border: 1px solid var(--catea-border);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--catea-shadow-soft);
+  text-align: left;
+}
+
+.catea-yolo-credit-intro {
+  max-width: 820px;
+}
+
+.catea-yolo-credit-intro .catea-yolo-kicker {
+  margin: 0 0 14px;
+}
+
+.catea-yolo-credit-intro h3 {
+  margin: 0;
+  color: var(--catea-ink);
+  font-size: 26px;
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+}
+
+.catea-yolo-credit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.catea-yolo-credit-card {
+  padding: 20px;
+  border: 1px solid rgba(64, 110, 80, 0.18);
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(249, 253, 249, 0.94), rgba(255, 255, 255, 0.86));
+}
+
+.catea-yolo-credit-card small {
+  color: var(--catea-accent);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.catea-yolo-credit-card h4 {
+  margin: 12px 0 14px;
+  color: var(--catea-ink);
+  font-size: 21px;
+  letter-spacing: -0.03em;
+}
+
+.catea-yolo-credit-card strong {
+  display: block;
+  color: var(--catea-accent);
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.catea-yolo-credit-card span {
+  display: block;
+  margin-top: 8px;
+  color: var(--catea-muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.catea-yolo-usage-rules {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.catea-yolo-usage-rules p {
+  margin: 0;
+  padding: 14px;
+  border: 1px solid var(--catea-border);
+  border-radius: 18px;
+  background: rgba(248, 251, 248, 0.76);
+  color: var(--catea-muted);
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.55;
+}
+
 .catea-yolo-ready {
   margin-top: 90px;
   border-top: 1px solid var(--catea-border);

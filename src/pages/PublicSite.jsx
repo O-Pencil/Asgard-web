@@ -44,10 +44,24 @@ const copy = {
     philosophyBody:
       'Your notes are the system of record. Catea keeps the workspace centered on Obsidian, so AI becomes a way to understand and shape your knowledge rather than a place where your knowledge disappears.',
     pricingTitle: 'Start with your own model. Upgrade when you want it ready-made.',
-    pricingSub: 'Use your own key for free, or subscribe to Catea Pro for hosted model access.',
+    pricingSub: 'Use your own key for free, or subscribe to Catea Pro for hosted model access. Credits, reset windows, and renewal behavior are shown before checkout.',
     plans: [
-      ['Free', 'Bring your own API key', '', '$0', '', 'For users who already have a model provider.', ['Use your own API key', 'Models and keys stay on this device', 'Basic agent and note workflows'], 'Current default plan', OBSIDIAN_PLUGIN_URL],
-      ['Pro', 'Limited-time offer', '$10', '$3', '/ month', 'Ready out of the box. No API key setup required.', ['Includes Catea-hosted AI usage', 'More usage for long documents and agent workflows', 'Allowance restores automatically and resets monthly', 'Priority access to advanced features: connectors, custom personas, and media generation'], 'Subscribe to Pro', '#pricing'],
+      ['Free', 'Bring your own API key', '', '$0', '', 'For users who already have a model provider.', ['Use your own API key', 'Models and keys stay on this device', 'Basic agent and note workflows', 'No Catea-hosted model credits included'], 'Current default plan', OBSIDIAN_PLUGIN_URL],
+      ['Pro', 'Limited-time offer', '$30', '$9.9', '/ month', 'Ready out of the box. No API key setup required.', ['100,000 Catea-hosted AI credits every month', '1 model token uses 1 credit', '20,000-credit short window resets every 5 hours', 'Monthly subscription renews automatically until canceled', 'Priority access to advanced features: connectors, custom personas, and media generation'], 'Subscribe to Pro', '#pricing'],
+    ],
+    cnyLine: 'CNY: ¥180 → ¥60 / month · China payment coming soon',
+    creditsTitle: 'Extra credits',
+    creditsSub: 'One-time credits when you need more room. Credits packs do not renew automatically and are used after the monthly Pro allowance is exhausted.',
+    creditPacks: [
+      ['Small top-up', '20,000 credits', '$3', '¥18'],
+      ['More room', '50,000 credits', '$6', '¥36'],
+      ['Best value', '100,000 credits', '$9.9', '¥60'],
+    ],
+    usageRules: [
+      '1 model token uses 1 credit.',
+      'Pro includes 100,000 hosted AI credits every month.',
+      'A 20,000-credit short window resets every 5 hours to keep service stable.',
+      'When monthly credits run out, hosted AI pauses until renewal or extra credits are added.',
     ],
     ready: ['Ready to think', 'Give your vault a mind.', 'See plans'],
     footer: {
@@ -107,10 +121,24 @@ const copy = {
     philosophyTitle: '把 AI 带进你的知识库，而不是把知识搬到另一个应用。',
     philosophyBody: '你的笔记才是系统中心。Catea 让工作区继续围绕 Obsidian 展开，让 AI 成为理解和塑造知识的方式，而不是吞掉知识的地方。',
     pricingTitle: '先用自己的模型开始，需要开箱即用时再升级。',
-    pricingSub: '免费版使用自己的 Key；Catea Pro 提供托管模型和月度额度。',
+    pricingSub: '免费版使用自己的 Key；Catea Pro 提供托管模型和月度额度。付款前会明确展示额度、重置窗口和续费规则。',
     plans: [
-      ['Free', '自备 API Key', '', '$0', '', '适合已有模型服务的用户。', ['使用你自己的 API Key', '模型和密钥仍保存在本机', '基础 Agent 和笔记工作流'], '当前默认套餐', OBSIDIAN_PLUGIN_URL],
-      ['Pro', '限时折扣', '$10', '$3', '/ month', '开箱即用，无需配置 API Key。', ['包含 Catea 托管 AI 额度', '更多用量，适合长文档和 Agent 工作流', '额度自动恢复，月度周期重置', '高级功能优先开放：连接器、自定义 Persona、媒体生成'], '订阅 Pro', '#pricing'],
+      ['Free', '自备 API Key', '', '$0', '', '适合已有模型服务的用户。', ['使用你自己的 API Key', '模型和密钥仍保存在本机', '基础 Agent 和笔记工作流', '不包含 Catea 托管模型额度'], '当前默认套餐', OBSIDIAN_PLUGIN_URL],
+      ['Pro', '限时折扣', '$30', '$9.9', '/ month', '开箱即用，无需配置 API Key。', ['每月 100,000 Catea 托管 AI credits', '1 model token 消耗 1 credit', '每 5 小时重置 20,000 credits 短窗口', '月度订阅会自动续费，可取消', '高级功能优先开放：连接器、自定义 Persona、媒体生成'], '订阅 Pro', '#pricing'],
+    ],
+    cnyLine: '人民币：¥180 → ¥60 / 月 · 国内支付待开放',
+    creditsTitle: 'Extra credits',
+    creditsSub: '需要更多额度时可一次性购买。Credits 包不会自动续费，会在 Pro 月度额度用完后继续使用。',
+    creditPacks: [
+      ['Small top-up', '20,000 credits', '$3', '¥18'],
+      ['More room', '50,000 credits', '$6', '¥36'],
+      ['Best value', '100,000 credits', '$9.9', '¥60'],
+    ],
+    usageRules: [
+      '1 model token 消耗 1 credit。',
+      'Pro 每月包含 100,000 托管 AI credits。',
+      '每 5 小时有 20,000 credits 短窗口，用于保证服务稳定。',
+      '月度额度用完后，托管 AI 会暂停，直到续费或追加 credits。',
     ],
     ready: ['Ready to think', 'Give your vault a mind.', '查看套餐'],
     footer: {
@@ -343,11 +371,31 @@ function Home({ t }) {
                   <strong>{sale}</strong>
                   {suffix && <span>{suffix}</span>}
                 </div>
+                {index === 1 && <p className="catea-yolo-plan-note">{t.cnyLine}</p>}
                 <p>{description}</p>
                 <ul>{items.map(item => <li key={item}>— {item}</li>)}</ul>
                 <a href={href} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noreferrer' : undefined}>{action}</a>
               </article>
             ))}
+          </div>
+          <div className="catea-yolo-credit-panel">
+            <div className="catea-yolo-credit-intro">
+              <p className="catea-yolo-kicker">{t.creditsTitle}</p>
+              <h3>{t.creditsSub}</h3>
+            </div>
+            <div className="catea-yolo-credit-grid">
+              {t.creditPacks.map(([label, credits, usd, cny]) => (
+                <article className="catea-yolo-credit-card" key={credits}>
+                  <small>{label}</small>
+                  <h4>{credits}</h4>
+                  <strong>{usd}</strong>
+                  <span>{cny} · CNY</span>
+                </article>
+              ))}
+            </div>
+            <div className="catea-yolo-usage-rules">
+              {t.usageRules.map(rule => <p key={rule}>{rule}</p>)}
+            </div>
           </div>
         </div>
       </section>
