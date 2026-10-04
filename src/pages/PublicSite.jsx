@@ -49,7 +49,7 @@ const copy = {
       ['Free', 'Bring your own API key', '', '$0', '', 'For users who already have a model provider.', ['Use your own API key', 'Models and keys stay on this device', 'Basic agent and note workflows', 'No Catea-hosted model credits included'], 'Current default plan', OBSIDIAN_PLUGIN_URL],
       ['Pro', 'Limited-time offer', '$30', '$9.9', '/ month', 'Ready out of the box. No API key setup required.', ['100,000 Catea-hosted AI credits every month', '1 model token uses 1 credit', '20,000-credit short window resets every 5 hours', 'Monthly subscription renews automatically until canceled', 'Priority access to advanced features: connectors, custom personas, and media generation'], 'Subscribe to Pro', '#pricing'],
     ],
-    cnyLine: 'CNY: ¥180 → ¥60 / month · China payment coming soon',
+    cnyLine: 'CNY: ¥180 → ¥60 / month · WeChat Pay supported',
     creditsTitle: 'Extra credits',
     creditsSub: 'One-time credits when you need more room. Credits packs do not renew automatically and are used after the monthly Pro allowance is exhausted.',
     creditPacks: [
@@ -126,7 +126,7 @@ const copy = {
       ['Free', '自备 API Key', '', '$0', '', '适合已有模型服务的用户。', ['使用你自己的 API Key', '模型和密钥仍保存在本机', '基础 Agent 和笔记工作流', '不包含 Catea 托管模型额度'], '当前默认套餐', OBSIDIAN_PLUGIN_URL],
       ['Pro', '限时折扣', '$30', '$9.9', '/ month', '开箱即用，无需配置 API Key。', ['每月 100,000 Catea 托管 AI credits', '1 model token 消耗 1 credit', '每 5 小时重置 20,000 credits 短窗口', '月度订阅会自动续费，可取消', '高级功能优先开放：连接器、自定义 Persona、媒体生成'], '订阅 Pro', '#pricing'],
     ],
-    cnyLine: '人民币：¥180 → ¥60 / 月 · 国内支付待开放',
+    cnyLine: '人民币：¥180 → ¥60 / 月 · 支持微信支付',
     creditsTitle: 'Extra credits',
     creditsSub: '需要更多额度时可一次性购买。Credits 包不会自动续费，会在 Pro 月度额度用完后继续使用。',
     creditPacks: [
