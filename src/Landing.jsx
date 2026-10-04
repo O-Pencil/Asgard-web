@@ -28,6 +28,19 @@ const features = [
 
 const roadmap = ['Connectors', 'Custom personas', 'Team plans']
 
+const creditPacks = [
+  { credits: '20,000', usd: '$3', cny: '¥18', label: 'Small top-up' },
+  { credits: '50,000', usd: '$6', cny: '¥36', label: 'More room' },
+  { credits: '100,000', usd: '$9.9', cny: '¥60', label: 'Best one-time value' },
+]
+
+const usageRules = [
+  '1 model token uses 1 credit.',
+  'Pro includes 100,000 hosted AI credits every month.',
+  'A 20,000-credit short window resets every 5 hours to keep service stable.',
+  'When monthly credits run out, hosted AI pauses until renewal or extra credits are added.',
+]
+
 function Landing() {
   return (
     <main className="catea-site">
@@ -105,18 +118,20 @@ function Landing() {
         <div className="catea-section__intro">
           <p className="catea-eyebrow">Plans</p>
           <h2>Start free. Upgrade when you want Catea-hosted usage.</h2>
-          <p>当前人民币支付待开放；正式计费先使用美元。</p>
+          <p>Every paid option shows the credits, reset rules, and renewal behavior before checkout.</p>
+          <p>付款前即可看到额度数量、扣费规则、重置窗口和用尽后的处理方式。</p>
         </div>
 
         <div className="catea-plan-grid">
           <article className="catea-plan-card">
             <p className="catea-plan-card__eyebrow">Free</p>
             <h3>$0</h3>
-            <p>Bring your own API key.</p>
+            <p>Bring your own API key. Catea keeps the agent workflow inside Obsidian.</p>
             <ul>
               <li>BYOK model configuration</li>
               <li>Local vault workflows</li>
               <li>Basic agent and note editing</li>
+              <li>No Catea-hosted model credits included</li>
             </ul>
             <a className="catea-button" href="mailto:support@pencil.chat">
               Get started
@@ -126,23 +141,49 @@ function Landing() {
           <article className="catea-plan-card catea-plan-card--pro">
             <p className="catea-plan-card__eyebrow">Limited-time offer</p>
             <h3>
-              <span className="catea-price-old">$10</span>
-              $3 <small>/ month</small>
+              <span className="catea-price-old">$30</span>
+              $9.9 <small>/ month</small>
             </h3>
             <p>Ready-to-use hosted AI usage. No API key setup required.</p>
             <ul>
-              <li>Catea-managed hosted model allowance</li>
-              <li>More usage for long notes and agent workflows</li>
-              <li>Monthly reset, simple subscription management</li>
+              <li>100,000 Catea-hosted AI credits every month</li>
+              <li>1 model token uses 1 credit</li>
+              <li>20,000-credit short window resets every 5 hours</li>
+              <li>Monthly subscription renews automatically until canceled</li>
               <li>Priority access to connectors and custom personas</li>
             </ul>
             <a className="catea-button catea-button--primary" href="mailto:support@pencil.chat">
               Subscribe in the plugin
             </a>
             <p className="catea-plan-card__muted">
-              CNY: <span className="catea-price-old">¥60</span> ¥18 / 月 · 暂不可用
+              CNY: <span className="catea-price-old">¥180</span> ¥60 / 月 · 国内支付待开放
             </p>
           </article>
+        </div>
+
+        <div className="catea-credit-panel">
+          <div className="catea-credit-panel__intro">
+            <p className="catea-eyebrow">Extra credits</p>
+            <h3>One-time credits when you need more room.</h3>
+            <p>Credits packs do not renew automatically. They add hosted AI credits to your account and are used after the monthly Pro allowance is exhausted.</p>
+            <p>一次性 credits 包不会自动续费；付款后增加到账号中，用于补充 Pro 月度额度。</p>
+          </div>
+          <div className="catea-credit-grid">
+            {creditPacks.map((pack) => (
+              <article className="catea-credit-card" key={pack.credits}>
+                <p>{pack.label}</p>
+                <h4>{pack.credits} credits</h4>
+                <strong>{pack.usd}</strong>
+                <span>{pack.cny} · CNY</span>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="catea-usage-rules" aria-label="Hosted AI usage rules">
+          {usageRules.map((rule) => (
+            <p key={rule}>{rule}</p>
+          ))}
         </div>
       </section>
 
@@ -158,9 +199,9 @@ function Landing() {
         </article>
         <article>
           <p className="catea-eyebrow">Billing</p>
-          <h2>Monthly Pro subscription.</h2>
+          <h2>Monthly subscription plus optional credits.</h2>
           <p>
-            Pro is billed monthly in USD during the current test-to-live rollout. Refund and
+            Pro renews monthly. Credits packs are one-time purchases and do not renew automatically. Refund and
             account support are handled by email at support@pencil.chat.
           </p>
         </article>

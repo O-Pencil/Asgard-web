@@ -316,6 +316,95 @@
   font-size: 14px;
 }
 
+
+.catea-credit-panel {
+  margin-top: 18px;
+  padding: 28px;
+  border: 1px solid rgba(44, 57, 49, 0.12);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 18px 60px rgba(35, 48, 40, 0.08);
+}
+
+.catea-credit-panel__intro {
+  display: grid;
+  gap: 8px;
+  max-width: 760px;
+}
+
+.catea-credit-panel__intro h3 {
+  margin: 0;
+  color: #25342c;
+  font-size: 30px;
+  letter-spacing: -0.035em;
+}
+
+.catea-credit-panel__intro p:not(.catea-eyebrow) {
+  margin: 0;
+  color: #647067;
+  line-height: 1.65;
+}
+
+.catea-credit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.catea-credit-card {
+  padding: 18px;
+  border: 1px solid rgba(47, 107, 79, 0.16);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(245, 250, 246, 0.92), rgba(255, 255, 255, 0.86));
+}
+
+.catea-credit-card p {
+  margin: 0 0 8px;
+  color: #2f6b4f;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.catea-credit-card h4 {
+  margin: 0 0 12px;
+  color: #25342c;
+  font-size: 22px;
+  letter-spacing: -0.03em;
+}
+
+.catea-credit-card strong {
+  display: block;
+  color: #25342c;
+  font-size: 32px;
+  letter-spacing: -0.04em;
+}
+
+.catea-credit-card span {
+  color: #7a857d;
+  font-size: 14px;
+}
+
+.catea-usage-rules {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.catea-usage-rules p {
+  margin: 0;
+  padding: 14px;
+  border: 1px solid rgba(44, 57, 49, 0.1);
+  border-radius: 18px;
+  background: rgba(248, 251, 248, 0.78);
+  color: #536258;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
 .catea-section--split {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -349,6 +438,8 @@
   .catea-hero__grid,
   .catea-feature-grid,
   .catea-plan-grid,
+  .catea-credit-grid,
+  .catea-usage-rules,
   .catea-section--split {
     grid-template-columns: 1fr;
   }
